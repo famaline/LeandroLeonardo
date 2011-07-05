@@ -10547,7 +10547,7 @@ msgstr "<strong>ERRO</strong>: Nome de usuário inválido ou senha incorreta."
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:29
 #: wp-content/plugins/akismet/legacy.php:176
 msgid "Search"
-msgstr "Pesquisar"
+msgstr "Buscar"
 
 #: wp-includes/script-loader.php:422
 msgid "Could not set that as the thumbnail image. Try a different attachment."
