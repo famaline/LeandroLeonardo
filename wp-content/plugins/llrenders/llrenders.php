@@ -70,7 +70,7 @@ class RenderHelpers {
 	        foreach ($attachments as $attachment) {
 	            $type = $attachment -> post_mime_type;
 	            
-	            if(starts_with($type, 'image/'))
+	            if(RenderHelpers::starts_with($type, 'image/'))
 	                return $attachment;
 	        }
 	    }
