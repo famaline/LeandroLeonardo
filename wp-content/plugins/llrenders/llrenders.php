@@ -35,9 +35,49 @@ class Renders {
 		$ano = $date_info['year'];
 		echo "$dia_semana, $dia_mes de $mes de $ano";
 	}
+	
+	public static function render_destaque($indice=1, $template=null) {
+		$destaque = get_page_by_title("destaque$indice");
+		$dado = get_post_custom_values("produto", $destaque -> ID);
+		$image = RenderHelpers::get_post_image($destaque -> ID);
+		
+		if($template === null) {
+			$template = function ($img, $dt) {
+				echo $dt;
+			};
+		}
+		
+		$template($image, $dado[0]);
+	}
 }
 
 class RenderHelpers {
+	public static function starts_with($text, $compared){
+	    return strpos($text, $compared) === 0;
+	}
+	
+	public static function get_post_image($post_id) {
+	    $args = array(
+	        'post_type' => 'attachment',
+	        'numberposts' => -1,
+	        'post_status' => null,
+	        'post_parent' => $post_id
+		); 
+	    $attachments = get_posts($args);
+	    $image = null;
+	    
+	    if($attachments) {
+	        foreach ($attachments as $attachment) {
+	            $type = $attachment -> post_mime_type;
+	            
+	            if(starts_with($type, 'image/'))
+	                return $attachment;
+	        }
+	    }
+	    
+	    return false;
+	}
+
 	public static function write_menu_link($name, $text, $forced_link = '') {
 	    $url = get_bloginfo('url') . (isset($forced_link) && !empty($forced_link) ? $forced_link : '/main/' . $name . '/');
 	    $class_name = $name . ((RenderHelpers::actual_url(true) == $url) ? '_on' : '' );
