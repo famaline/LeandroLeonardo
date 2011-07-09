@@ -14,7 +14,11 @@
 	</div><!-- #main -->
 </div><!-- #wrapper -->
 <table id="rodape" width="1004" cellspacing="0">
-	<tr><td height="30" style="background-color: #CCC"><img/></td></tr>
+	<tr style="background-color: #e5e5e5">
+    <td id="aceitamos">Aceitamos:</td>
+    <td id="pgto">&nbsp;</td>
+    <td id="texto"><?php Renders::render_content('rodape', 'Por favor, crie uma página cujo nome seja "rodape" e grave o conteúdo do rodapé lá')?></td>
+  </tr>
 </table>
 <?php
 	/* Always have wp_footer() just before the closing </body>

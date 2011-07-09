@@ -95,10 +95,10 @@
                 <td>
             	<table cellpadding="0" cellspacing="0">
                 <tr>
-                  <td><?php RenderHelpers::write_menu_link('home', 'Home', '/');?></td><td class="menu-separador">|</td>
-                  <td><?php RenderHelpers::write_menu_link('contato', 'Contato', '/contato/');?></td><td class="menu-separador">|</td>
-                  <td><?php RenderHelpers::write_menu_link('missao', 'Missão', '/missao/');?></td><td class="menu-separador">|</td>
-                  <td><?php RenderHelpers::write_menu_link('agenda', 'Agenda', '/events/');?></td>
+                  <td><?php Renders::render_menu_link('home', 'Home', '/');?></td><td class="menu-separador">|</td>
+                  <td><?php Renders::render_menu_link('contato', 'Contato', '/contato/');?></td><td class="menu-separador">|</td>
+                  <td><?php Renders::render_menu_link('missao', 'Missão', '/missao/');?></td><td class="menu-separador">|</td>
+                  <td><?php Renders::render_menu_link('agenda', 'Agenda', '/events/');?></td>
                 </tr>
               </table>
                 <td>

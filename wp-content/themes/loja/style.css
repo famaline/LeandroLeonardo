@@ -3,6 +3,14 @@ body {
 	font-size: 11px;
 	padding: 0px;
 	margin: 0px;
+  background-color: #CCC;
+}
+
+#container {
+  min-height:300px;
+  width: 1004px;
+  background-color: #FFF;
+  padding-top: 15px;
 }
 
 #header {
@@ -12,7 +20,6 @@ body {
 #header #linha_media {
   background-image: url(images/headers/main-bg.gif);
   height: 106px;
-  margin-bottom: 15px;
 }
 
 #header #linha_top {
@@ -60,6 +67,32 @@ body {
 .linkmenu_on {
   color: #FFF;
   background-color: #ff6600;
+}
+/* ----------------------------------------------------------- */
+
+
+/* =Footer
+-------------------------------------------------------------- */
+#rodape {
+  height: 40px;
+  color: #777;
+}
+#rodape #aceitamos {
+  width: 102px;
+  text-align: right;
+  padding-right: 33px;
+  font-weight: bold;
+}
+
+#rodape #pgto {
+  background-image: url(images/footer/pag-seguro.png);
+  background-repeat: no-repeat;
+  width: 125px;
+}
+
+#rodape #texto {
+  text-align: center;
+  font-size: 11px;
 }
 /* ----------------------------------------------------------- */
 
