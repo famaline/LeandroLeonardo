@@ -51,15 +51,7 @@
 	wp_head();
 ?>
 <style>
-#cabecalho #linha_media {
-	background-color: #EFEFEF;
-}
 
-#cabecalho #cabecalho_msg {
-	background-color: #AAA;
-	padding: 3px;
-	color: #FFF;
-}
 </style>
 </head>
 
@@ -67,28 +59,61 @@
 <center>
 <div id="wrapper" class="hfeed">
 	<div id="header">
-				<table id="cabecalho" width="100%" cellspacing="0">
-					<tr id="linha_top"><td colspan="3" height="3" style="background-color: #CCC"><img/></td></tr>
-					<tr id="linha_media">
-						<td height="60" width="400">&nbsp;</td>
-						<td valign="bottom" width="300"><div id="cabecalho_msg">Teste</div></td>
-						<td width="304" align="right" style="padding-right: 15px;"><?php Renders::render_now();?><br/><?php get_search_form(); ?></td>
-					</tr>
-				</table>
+    <div id="linha_top"></div>
+    <div id="linha_media">
+      <table width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td height="80" valign="top">
+          	<table width="100%" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="347">&nbsp;</td>
+                <td valign="top">
+                  <table width="100%" cellspacing="0" cellpadding="0">
+                    <tr height="18">
+                      <td align="right" class="data" style="padding-right: 15px;"><?php Renders::render_now();?></td>
+                    </tr>
+                    <tr>
+                      <td>
+                      	<table width="100%" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td valign="top" width="341"><div id="cabecalho_msg">Teste</div></td>
+                            <td width="304" align="right" valign="top" id="search-area" style="padding-right: 15px;"><?php get_search_form(); ?></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height="26" align="center">
+            <table id="menu">
+              <tr>
+                <td>
+            	<table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td><?php RenderHelpers::write_menu_link('home', 'Home', '/');?></td><td class="menu-separador">|</td>
+                  <td><?php RenderHelpers::write_menu_link('contato', 'Contato', '/contato/');?></td><td class="menu-separador">|</td>
+                  <td><?php RenderHelpers::write_menu_link('missao', 'Missão', '/missao/');?></td><td class="menu-separador">|</td>
+                  <td><?php RenderHelpers::write_menu_link('agenda', 'Agenda', '/events/');?></td>
+                </tr>
+              </table>
+                <td>
+              <tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
 		<div id="masthead">
 			<div id="access" role="navigation">
 
             </ul>
         </div>
     </div>
-				<table>
-					<tr>
-		                <td><?php RenderHelpers::write_menu_link('home', 'Home', '/');?></td><td>|</td>
-		                <td><?php RenderHelpers::write_menu_link('contato', 'Contato', '/contato/');?></td><td>|</td>
-		                <td><?php RenderHelpers::write_menu_link('missao', 'Missão', '/missao/');?></td><td>|</td>
-		                <td><?php RenderHelpers::write_menu_link('agenda', 'Agenda', '/events/');?></td>
-					</tr>
-				</table>
 			</div><!-- #access -->
 		</div><!-- #masthead -->
 	</div><!-- #header -->

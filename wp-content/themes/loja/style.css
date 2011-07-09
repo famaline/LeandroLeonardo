@@ -1,6 +1,6 @@
 body {
 	font-family: Verdana, Arial;
-	font-size: 12px;
+	font-size: 11px;
 	padding: 0px;
 	margin: 0px;
 }
@@ -8,3 +8,89 @@ body {
 #header {
 	width: 1004px;
 }
+
+#header #linha_media {
+  background-image: url(images/headers/main-bg.gif);
+  height: 106px;
+  margin-bottom: 15px;
+}
+
+#header #linha_top {
+	background-color:#C9C9C9;
+  height: 3px;
+}
+
+#header #cabecalho_msg {
+	background-color: #777;
+	padding: 3px;
+  width: 341px;
+	color: #FFF;
+  font-size: 10px;
+  height: 15px;
+}
+
+/* =Menu
+-------------------------------------------------------------- */
+#header #menu {
+  width: 974px;
+  height: 26px;
+  padding: 0 15px;
+  background-image: url(images/headers/menu-bg.gif);
+}
+
+.menu-separador {
+  width: 15px;
+  text-align: center;
+  color: #a1a1a1;
+}
+
+.linkmenu_on, .linkmenu {
+  padding: 2px 5px;
+  text-decoration: none;
+  color: #a1a1a1;
+}
+
+.linkmenu:hover{
+  padding: 2px 5px;
+  text-decoration: none;
+  color: #a1a1a1;
+  background-color: #ededed;
+}
+
+.linkmenu_on {
+  color: #FFF;
+  background-color: #ff6600;
+}
+/* ----------------------------------------------------------- */
+
+
+/* =Search Form
+-------------------------------------------------------------- */
+#search-area {}
+
+#searchform {}
+
+#searchform  #s {
+  width: 181px;
+  height: 17px;
+  border: none;
+  color: #777;
+  font-size: 11px;
+  padding: 2px;
+}
+
+#searchform #searchsubmit {
+  width: 64px;
+  height: 21px;
+  border-style: none;
+  background-color: #ff6600;
+  font-weight: bold;
+  font-size: 12px;
+  color: #FFF;
+}
+/* ----------------------------------------------------------- */
+
+.data {
+  color: #777;
+  font-size: 10px;
+} 

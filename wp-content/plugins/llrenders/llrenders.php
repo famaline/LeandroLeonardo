@@ -80,7 +80,7 @@ class RenderHelpers {
 
 	public static function write_menu_link($name, $text, $forced_link = '') {
 	    $url = get_bloginfo('url') . (isset($forced_link) && !empty($forced_link) ? $forced_link : '/main/' . $name . '/');
-	    $class_name = $name . ((RenderHelpers::actual_url(true) == $url) ? '_on' : '' );
+	    $class_name = 'linkmenu' . ((RenderHelpers::actual_url(true) == $url) ? '_on' : '' );
 	    print '<a href="' . $url . '" title="' . $text . '" class="' . $class_name . '">' . $text . '</a>';
 	}
 	
