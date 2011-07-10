@@ -96,9 +96,11 @@
                   <table cellpadding="0" cellspacing="0">
                     <tr>
                       <td><?php Renders::render_menu_link('home', 'Home', '/');?></td><td class="menu-separador">|</td>
-                      <td><?php Renders::render_menu_link('contato', 'Contato', '/contato/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('missao', 'Missão', '/missao/');?></td><td class="menu-separador">|</td>
-                      <td><?php Renders::render_menu_link('agenda', 'Agenda', '/events/');?></td>
+                      <td><?php Renders::render_menu_link('agenda', 'Eventos', '/events/');?></td><td class="menu-separador">|</td>
+                      <td><?php Renders::render_menu_link('amigos', 'Amigos', '/amigos-diro/');?></td><td class="menu-separador">|</td>
+                      <td><?php Renders::render_menu_link('localizacao', 'Localização', '/localizacao/');?></td><td class="menu-separador">|</td>
+                      <td><?php Renders::render_menu_link('contato', 'Contato', '/contato/');?></td>
                     </tr>
                   </table>
                 <td>
