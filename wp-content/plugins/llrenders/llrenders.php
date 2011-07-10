@@ -25,6 +25,20 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 class Renders {
+  public static function render_image($path, $params=null) {
+    $image_tag = '<img src="' . get_bloginfo('template_directory') . '/images/' . $path . '"';
+    
+    if(isset($params)) { //percorre parametros chave/valor e printa como atributos da imagem
+      $attributes = array_keys($params);
+      foreach($attributes as $attribute) {
+        $image_tag .= " $attribute=\"$params[$attribute]\"";
+      }
+    }
+    
+    $image_tag .= '/>';
+    
+    echo $image_tag;
+  }
 	public static function render_now() {
 		$dias_semana = array('Domingo', 'Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado');
 		$meses = array('', 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro');
