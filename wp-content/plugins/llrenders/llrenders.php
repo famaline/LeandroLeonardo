@@ -91,7 +91,7 @@ class Renders {
 
 		if($template === null) {
 			$template = function ($img, $dt) {
-				echo '<div id="post-img-container"><a href="http://localhost/loja/?wpsc-product=' . $dt . '"><img src="' . $img -> guid . '" id="post-img" width="468" border=0/></a></div>';
+				echo '<div id="post-img-container"><a href="' . get_bloginfo('url') . '?wpsc-product=' . $dt . '"><img src="' . $img -> guid . '" id="post-img" width="468" border=0/></a></div>';
 			};
 		}
 		
