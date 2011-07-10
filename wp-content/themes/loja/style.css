@@ -13,8 +13,12 @@ body {
   padding-top: 15px;
 }
 
-#header {
+#wrapper {
 	width: 1004px;
+  background-color: #FFF;
+}
+
+#header {
 }
 
 #header #linha_media {
@@ -34,6 +38,7 @@ body {
 	color: #FFF;
   font-size: 10px;
   height: 15px;
+  text-align: left;
 }
 
 /* =Destaque

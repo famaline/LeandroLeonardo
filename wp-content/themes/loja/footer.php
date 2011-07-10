@@ -12,7 +12,6 @@
 ?>
 
 	</div><!-- #main -->
-</div><!-- #wrapper -->
 <table id="rodape" width="1004" cellspacing="0">
 	<tr style="background-color: #e5e5e5">
     <td id="aceitamos">Aceitamos:</td>
@@ -28,6 +27,7 @@
 
 	wp_footer();
 ?>
+</div><!-- #wrapper -->
 </center>
 </body>
 </html>

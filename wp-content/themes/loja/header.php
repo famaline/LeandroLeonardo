@@ -93,29 +93,20 @@
             <table id="menu">
               <tr>
                 <td>
-            	<table cellpadding="0" cellspacing="0">
-                <tr>
-                  <td><?php Renders::render_menu_link('home', 'Home', '/');?></td><td class="menu-separador">|</td>
-                  <td><?php Renders::render_menu_link('contato', 'Contato', '/contato/');?></td><td class="menu-separador">|</td>
-                  <td><?php Renders::render_menu_link('missao', 'Missão', '/missao/');?></td><td class="menu-separador">|</td>
-                  <td><?php Renders::render_menu_link('agenda', 'Agenda', '/events/');?></td>
-                </tr>
-              </table>
+                  <table cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td><?php Renders::render_menu_link('home', 'Home', '/');?></td><td class="menu-separador">|</td>
+                      <td><?php Renders::render_menu_link('contato', 'Contato', '/contato/');?></td><td class="menu-separador">|</td>
+                      <td><?php Renders::render_menu_link('missao', 'Missão', '/missao/');?></td><td class="menu-separador">|</td>
+                      <td><?php Renders::render_menu_link('agenda', 'Agenda', '/events/');?></td>
+                    </tr>
+                  </table>
                 <td>
               <tr>
             </table>
           </td>
         </tr>
       </table>
-    </div>
-		<div id="masthead">
-			<div id="access" role="navigation">
-
-            </ul>
-        </div>
-    </div>
-			</div><!-- #access -->
-		</div><!-- #masthead -->
-	</div><!-- #header -->
-
+    </div><!-- #linha_media -->
+	</div><!-- hearder -->
 	<div id="main">
