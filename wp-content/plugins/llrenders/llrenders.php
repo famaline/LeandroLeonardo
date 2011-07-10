@@ -25,6 +25,40 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 class Renders {
+  public static function render_galeria($categoria, $num_exibir=4) {
+?>
+  <table class="galeria" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="40" valign="top"><?php Renders::render_image('galeria/left-on.png', array('width'=>40, 'heigth'=>163))?></td>
+      <td valign="top">
+        <?php for($i=0; $i < $num_exibir; $i++) {
+          echo Renders::render_galeria_part();
+        }?>
+      </td>
+      <td width="40" valign="top"><?php Renders::render_image('galeria/right-on.png', array('width'=>40, 'heigth'=>163))?></td>
+    </tr>
+  </table>
+<?php
+  }
+  
+  private static function render_galeria_part() {
+?>
+<div class="produto-wrapper">
+  <table class="produto" cellspacing="1" cellpadding="0">
+    <tr>
+      <td class="produto-imagem">[img]</td><td class="produto-bar">b</td>
+    </tr>
+  </table>
+  <div class="produto-info">
+    <div class="prod-tit">Bota de Couro</div>
+    <div class="prod-de">R$ 179,00</div>
+    por <div class="prod-por">R$ 149,00</div>
+    <div class="prod-button-wrapper"><input type="button" value="COMPRAR"/></div>
+  </div>
+</div>
+<?php
+  }
+  
   public static function render_image($path, $params=null) {
     $image_tag = '<img src="' . get_bloginfo('template_directory') . '/images/' . $path . '"';
     

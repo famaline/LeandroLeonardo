@@ -10,10 +10,18 @@ get_header(); ?>
         </table>
         <table cellpadding="0" cellspacing="0" id="lancamentos">
           <tr>
-            <td><?php Renders::render_image('headers/fern.jpg', array('width' => '300', 'height' => '50'))?></td>
+            <td><?php Renders::render_image('tit-lancamentos.png', array('width' => '133', 'height' => '22'))?></td>
           </tr>
           <tr>
-            <td>bla</td>
+            <td><?php Renders::render_galeria('lancamentos', 4)?></td>
+          </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0" id="promocoes">
+          <tr>
+            <td><?php Renders::render_image('tit-promocoes.png', array('width' => '110', 'height' => '22'))?></td>
+          </tr>
+          <tr>
+            <td><?php Renders::render_galeria('promocoes', 4)?></td>
           </tr>
         </table>
       </div>

@@ -1,23 +1,5 @@
-body {
-	font-family: Verdana, Arial;
-	font-size: 11px;
-	padding: 0px;
-	margin: 0px;
-  background-color: #CCC;
-}
-
-#container {
-  min-height:300px;
-  width: 1004px;
-  background-color: #FFF;
-  padding-top: 15px;
-}
-
-#wrapper {
-	width: 1004px;
-  background-color: #FFF;
-}
-
+/* =Header
+-------------------------------------------------------------- */
 #header {
 }
 
@@ -40,10 +22,18 @@ body {
   height: 15px;
   text-align: left;
 }
+/* ----------------------------------------------------------- */
 
-/* =Destaque
+
+/* =Home
 -------------------------------------------------------------- */
 #destaque {
+  margin-bottom: 15px;
+}
+
+#lancamentos, #promocoes {
+  width: 100%;
+  padding: 0 15px;
   margin-bottom: 15px;
 }
 /* ----------------------------------------------------------- */
@@ -135,7 +125,81 @@ body {
 }
 /* ----------------------------------------------------------- */
 
+
+/* =Classes
+-------------------------------------------------------------- */
 .data {
   color: #777;
   font-size: 10px;
-} 
+}
+/* ----------------------------------------------------------- */
+
+
+/* =Galeria
+-------------------------------------------------------------- */
+.galeria {
+  width: 100%;
+}
+
+.galeria .produto-wrapper {
+  display: inline-block;
+  min-height: 255px;
+  margin-left: 25px;
+}
+
+.galeria .produto {
+  background-color: #ddd;
+  margin-bottom: 12px;
+}
+
+.galeria .produto .produto-bar {
+  background-color: #e5e5e5;
+  width: 23px;
+}
+
+.galeria .produto .produto-imagem {
+  background-color: #FFF;
+  width: 160px;
+  height: 160px;
+}
+
+.galeria .produto-info {
+  color: #777;
+}
+
+.galeria .produto-info .prod-tit, .prod-por {
+  font-weight: bold;
+}
+
+.galeria .produto-info .prod-de {
+  text-decoration: line-through;
+  font-size: 9px;
+}
+
+.galeria .produto-info .prod-por {
+  display: inline;
+}
+/* ----------------------------------------------------------- */
+
+/* =Todo documento
+-------------------------------------------------------------- */
+body {
+	font-family: Verdana, Arial;
+	font-size: 11px;
+	padding: 0px;
+	margin: 0px;
+  background-color: #CCC;
+}
+
+#container {
+  min-height:300px;
+  width: 1004px;
+  background-color: #FFF;
+  padding-top: 15px;
+}
+
+#wrapper {
+	width: 1004px;
+  background-color: #FFF;
+}
+/* ----------------------------------------------------------- */
