@@ -40,10 +40,10 @@ class Renders {
 		$destaque = get_page_by_title("destaque$indice");
 		$dado = get_post_custom_values("produto", $destaque -> ID);
 		$image = RenderHelpers::get_post_image($destaque -> ID);
-		
+
 		if($template === null) {
 			$template = function ($img, $dt) {
-				echo $dt;
+				echo '<div id="post-img-container"><a href="http://localhost/loja/?wpsc-product=' . $dt . '"><img src="' . $img -> guid . '" id="post-img" width="468" border=0/></a></div>';
 			};
 		}
 		
