@@ -97,6 +97,7 @@
                     <tr>
                       <td><?php Renders::render_menu_link('home', 'Home', '/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('missao', 'Missão', '/missao/');?></td><td class="menu-separador">|</td>
+                      <td><?php Renders::render_menu_link('produtos', 'Produtos', '/produtos/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('agenda', 'Eventos', '/events/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('amigos', 'Amigos', '/amigos-diro/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('localizacao', 'Localização', '/localizacao/');?></td><td class="menu-separador">|</td>
