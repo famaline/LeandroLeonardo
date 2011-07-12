@@ -30,7 +30,4 @@
 						<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>
 					</div><!-- .entry-content -->
 				</div><!-- #post-## -->
-
-				<?php comments_template( '', true ); ?>
-
 <?php endwhile; // end of the loop. ?>
