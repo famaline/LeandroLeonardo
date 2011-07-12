@@ -158,3 +158,23 @@ class RenderHelpers {
         return $pageURL . $uri;
     }
 }
+
+class Produto {
+    var $table_name;
+    function Produto() {
+        global $wpdb;
+    }
+    
+    function find_medicos_pendentes() {
+        return $this -> find_medicos("", "ORDER BY aprovado, nome");
+    }
+    
+    function find($where="", $order="ORDER BY dt_criacao DESC") {
+        global $wpdb;
+        $retorno = array();
+
+        $sql = "SELECT cidade, estado, login, id, nome, crm, email, senha, especialidade, custom, aprovado FROM $medicos_table $where $order";
+		
+        return $wpdb->get_results($sql, ARRAY_A);
+    }
+}

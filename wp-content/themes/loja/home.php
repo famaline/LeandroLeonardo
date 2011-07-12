@@ -8,6 +8,12 @@ get_header(); ?>
             <td><?php Renders::render_destaque(2);?></td>
           </tr>
         </table>
+        <?php //$products = $wpdb->get_results("SELECT * FROM wp_posts p INNER JOIN wp_postmeta pm on p.id = wp.post_id WHERE post_type = 'wpsc-product' and post_status = 'publish' LIMIT 5");
+
+        //foreach($products as $product) {
+        //  echo $product -> ID;
+        //}
+        ?>
         <table cellpadding="0" cellspacing="0" id="lancamentos">
           <tr>
             <td><?php Renders::render_image('tit-lancamentos.png', array('width' => '133', 'height' => '22'))?></td>
