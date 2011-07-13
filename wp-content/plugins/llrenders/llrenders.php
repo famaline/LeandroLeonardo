@@ -160,21 +160,35 @@ class RenderHelpers {
 }
 
 class Produto {
-    var $table_name;
-    function Produto() {
-        global $wpdb;
-    }
+  //retrieves the product category Id by slug
+  public static function get_cat_ID($slug) {
+    global $wpdb;
     
-    function find_medicos_pendentes() {
-        return $this -> find_medicos("", "ORDER BY aprovado, nome");
-    }
-    
-    function find($where="", $order="ORDER BY dt_criacao DESC") {
-        global $wpdb;
-        $retorno = array();
+    $sql = "SELECT term_id as ID FROM " . $wpdb->prefix ."terms WHERE slug='$slug'";
+    $results = $wpdb->get_results($sql, ARRAY_A);
 
-        $sql = "SELECT cidade, estado, login, id, nome, crm, email, senha, especialidade, custom, aprovado FROM $medicos_table $where $order";
-		
-        return $wpdb->get_results($sql, ARRAY_A);
+    return empty($results)? 0 : $results[0]['ID'];
+  }
+
+  //retrieves all products filtered by whatever conditions given;
+  //special condition: category_id
+  public static function all($conditions=null) {
+    global $wpdb;
+    
+    $sql_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_price'";
+    $sql_special_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_special_price'";
+    $sql = "(SELECT ID, post_title, ($sql_price) as price, ($sql_special_price) as special_price, post_content FROM " . $wpdb->prefix ."posts p WHERE p.post_status = 'publish' AND p.post_type = 'wpsc-product') as products";
+    
+    if(!empty($conditions)) {
+      if(array_key_exists('category_id')) {
+        $sql .= " pr INNER JOIN " . $wpdb->prefix ."term_relationships tr ON pr.object_id = tr.term_taxonomy_id";
+      }
+      
+      $conditions_keys = array_keys($conditions);
+      foreach($conditions_keys as $condition) {
+        //$image_tag .= " $attribute=\"$params[$attribute]\"";
+      }
     }
+    return $wpdb->get_results($sql, ARRAY_A);
+  }
 }
