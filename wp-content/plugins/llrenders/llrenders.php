@@ -26,13 +26,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 class Renders {
   public static function render_galeria($categoria, $num_exibir=4) {
+    $products = Produto::all(array('category_id' => Produto::get_cat_ID($categoria)));
 ?>
   <table class="galeria" cellspacing="0" cellpadding="0">
     <tr>
       <td width="40" valign="top"><?php Renders::render_image('galeria/left-on.png', array('width'=>40, 'heigth'=>163))?></td>
       <td valign="top">
         <?php for($i=0; $i < $num_exibir; $i++) {
-          echo Renders::render_galeria_part();
+          $product = (count($products) - 1) > $i? $products[$i] : null;
+          echo Renders::render_galeria_part($product);
         }?>
       </td>
       <td width="40" valign="top"><?php Renders::render_image('galeria/right-on.png', array('width'=>40, 'heigth'=>163))?></td>
@@ -41,7 +43,7 @@ class Renders {
 <?php
   }
   
-  private static function render_galeria_part() {
+  private static function render_galeria_part($product) {
 ?>
 <div class="produto-wrapper">
   <table class="produto" cellspacing="1" cellpadding="0">
@@ -50,7 +52,7 @@ class Renders {
     </tr>
   </table>
   <div class="produto-info">
-    <div class="prod-tit">Bota de Couro</div>
+    <div class="prod-tit"><?php echo isset($product) ? $product['post_title'] : '--'?></div>
     <div class="prod-de">R$ 179,00</div>
     por <div class="prod-por">R$ 149,00</div>
     <div class="prod-button-wrapper"><input type="button" value="COMPRAR"/></div>
@@ -177,18 +179,21 @@ class Produto {
     
     $sql_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_price'";
     $sql_special_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_special_price'";
-    $sql = "(SELECT ID, post_title, ($sql_price) as price, ($sql_special_price) as special_price, post_content FROM " . $wpdb->prefix ."posts p WHERE p.post_status = 'publish' AND p.post_type = 'wpsc-product') as products";
+    $sql = "SELECT pr.ID, pr.post_title, pr.price, pr.special_price FROM (SELECT ID, post_title, ($sql_price) as price, ($sql_special_price) as special_price, post_content FROM " . $wpdb->prefix ."posts p WHERE p.post_status = 'publish' AND p.post_type = 'wpsc-product') as pr";
     
     if(!empty($conditions)) {
-      if(array_key_exists('category_id')) {
-        $sql .= " pr INNER JOIN " . $wpdb->prefix ."term_relationships tr ON pr.object_id = tr.term_taxonomy_id";
+      if(array_key_exists('category_id', $conditions)) {
+        $sql .= " INNER JOIN " . $wpdb->prefix ."term_relationships tr ON tr.object_id = pr.ID";
       }
-      
+      $sql .= " WHERE 1=1";
       $conditions_keys = array_keys($conditions);
-      foreach($conditions_keys as $condition) {
-        //$image_tag .= " $attribute=\"$params[$attribute]\"";
+      foreach($conditions_keys as $condition_key) {
+        $key = $condition_key == 'category_id'? 'tr.term_taxonomy_id' : $condition_key;
+
+        $sql .= " AND $key='" . $conditions[$condition_key] . "'";
       }
     }
+
     return $wpdb->get_results($sql, ARRAY_A);
   }
 }

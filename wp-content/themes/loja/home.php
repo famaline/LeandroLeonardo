@@ -8,7 +8,6 @@ get_header(); ?>
             <td><?php Renders::render_destaque(2);?></td>
           </tr>
         </table>
-        <?php echo Produto::all();?>
         <table cellpadding="0" cellspacing="0" id="lancamentos">
           <tr>
             <td><?php Renders::render_image('tit-lancamentos.png', array('width' => '133', 'height' => '22'))?></td>
