@@ -157,10 +157,12 @@
   width: 23px;
 }
 
-.galeria .produto .produto-imagem {
-  background-color: #FFF;
+.galeria .produto .produtc-image, .produto-imagem {
   width: 160px;
   height: 160px;
+}
+.galeria .produto .produto-imagem {
+  background-color: #FFF;
 }
 
 .galeria .produto-info {
