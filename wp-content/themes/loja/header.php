@@ -97,11 +97,12 @@
                     <tr>
                       <td><?php Renders::render_menu_link('home', 'Home', '/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('missao', 'Missão', '/missao/');?></td><td class="menu-separador">|</td>
-                      <td><?php Renders::render_menu_link('produtos', 'Produtos', '/produtos/');?></td><td class="menu-separador">|</td>
+                      <td><?php Renders::render_menu_link('produtos', 'Produtos', '/products-page/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('agenda', 'Eventos', '/events/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('amigos', 'Amigos', '/amigos-diro/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('localizacao', 'Localização', '/localizacao/');?></td><td class="menu-separador">|</td>
-                      <td><?php Renders::render_menu_link('contato', 'Contato', '/contato/');?></td>
+                      <td><?php Renders::render_menu_link('contato', 'Contato', '/contato/');?></td><td class="menu-separador">|</td>
+                      <td><?php Renders::render_menu_link('fechar', 'Fechar Pedido', '/products-page/checkout/');?></td>
                     </tr>
                   </table>
                 <td>
