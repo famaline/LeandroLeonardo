@@ -24,13 +24,16 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
+require_once('cache.php');
+require_once('produto.php');
+
 class Renders {
   public static function render_galeria($categoria, $num_exibir=4) {
     $products = Produto::all(array('category_id' => Produto::get_cat_ID($categoria)));
     require_once('galeria.php');
   }
   
-  private static function render_galeria_part($product) {
+  private static function render_galeria_part($product, $categoria='') {
     require_once('galeria_part.php');
   }
   
@@ -134,39 +137,10 @@ class RenderHelpers {
     }
 }
 
-class Produto {
-  //retrieves the product category Id by slug
-  public static function get_cat_ID($slug) {
-    global $wpdb;
-    
-    $sql = "SELECT term_id as ID FROM " . $wpdb->prefix ."terms WHERE slug='$slug'";
-    $results = $wpdb->get_results($sql, ARRAY_A);
-
-    return empty($results)? 0 : $results[0]['ID'];
-  }
-
-  //retrieves all products filtered by whatever conditions given;
-  //special condition: category_id
-  public static function all($conditions=null) {
-    global $wpdb;
-    
-    $sql_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_price'";
-    $sql_special_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_special_price'";
-    $sql = "SELECT pr.ID, pr.post_title, pr.price, pr.special_price FROM (SELECT ID, post_title, ($sql_price) as price, ($sql_special_price) as special_price, post_content FROM " . $wpdb->prefix ."posts p WHERE p.post_status = 'publish' AND p.post_type = 'wpsc-product') as pr";
-    
-    if(!empty($conditions)) {
-      if(array_key_exists('category_id', $conditions)) {
-        $sql .= " INNER JOIN " . $wpdb->prefix ."term_relationships tr ON tr.object_id = pr.ID";
-      }
-      $sql .= " WHERE 1=1";
-      $conditions_keys = array_keys($conditions);
-      foreach($conditions_keys as $condition_key) {
-        $key = $condition_key == 'category_id'? 'tr.term_taxonomy_id' : $condition_key;
-
-        $sql .= " AND $key='" . $conditions[$condition_key] . "'";
-      }
-    }
-
-    return $wpdb->get_results($sql, ARRAY_A);
-  }
-}
+function inicializar_renders() {
+    wp_deregister_script( 'llrenders' );
+    wp_register_script( 'llrenders', plugins_url( '/llrenders/js/llrenders.js' , dirname(__FILE__) ) );
+    wp_enqueue_script( 'llrenders' );
+}    
+ 
+add_action('init', 'inicializar_renders');

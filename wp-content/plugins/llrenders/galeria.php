@@ -4,7 +4,7 @@
       <td valign="top">
         <?php for($i=0; $i < $num_exibir; $i++) {
           $product = (count($products) - 1) <= $i? $products[$i] : null;
-          echo Renders::render_galeria_part($product);
+          echo Renders::render_galeria_part($product, $categoria);
         }?>
       </td>
       <td width="40" valign="top"><?php Renders::render_image('galeria/right-on.png', array('width'=>40, 'heigth'=>163))?></td>
