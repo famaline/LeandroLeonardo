@@ -30,7 +30,7 @@ class Renders {
     require_once('galeria.php');
   }
   
-  private static function render_galeria_part($product) {
+  private static function render_galeria_part($product, $categoria='') {
     require_once('galeria_part.php');
   }
   
@@ -152,7 +152,7 @@ class Produto {
     
     $sql_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_price'";
     $sql_special_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_special_price'";
-    $sql = "SELECT pr.ID, pr.post_title, pr.price, pr.special_price FROM (SELECT ID, post_title, ($sql_price) as price, ($sql_special_price) as special_price, post_content FROM " . $wpdb->prefix ."posts p WHERE p.post_status = 'publish' AND p.post_type = 'wpsc-product') as pr";
+    $sql = "SELECT pr.ID, pr.post_title, pr.price, pr.special_price, pr.post_name FROM (SELECT ID, post_title, post_name, ($sql_price) as price, ($sql_special_price) as special_price, post_content FROM " . $wpdb->prefix ."posts p WHERE p.post_status = 'publish' AND p.post_type = 'wpsc-product') as pr";
     
     if(!empty($conditions)) {
       if(array_key_exists('category_id', $conditions)) {
@@ -170,3 +170,11 @@ class Produto {
     return $wpdb->get_results($sql, ARRAY_A);
   }
 }
+
+function my_init_method() {
+    wp_deregister_script( 'llrenders' );
+    wp_register_script( 'llrenders', plugins_url( '/llrenders/js/llrenders.js' , dirname(__FILE__) ) );
+    wp_enqueue_script( 'llrenders' );
+}    
+ 
+add_action('init', 'my_init_method');

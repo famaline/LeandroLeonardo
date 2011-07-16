@@ -50,9 +50,15 @@
 	 */
 	wp_head();
 ?>
-<style>
-
-</style>
+<script>
+var Loja = {
+  get_bloginfo: function(what) {
+    var values = {'url': '<?php echo get_bloginfo('url')?>'};
+    
+    return values[what];
+  }
+};
+</script>
 </head>
 
 <body <?php body_class(); ?>>
