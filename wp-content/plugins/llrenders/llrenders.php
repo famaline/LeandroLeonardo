@@ -134,9 +134,42 @@ class RenderHelpers {
     }
 }
 
+class Cache {
+  private $innerCache;
+  private static $instance;
+  
+  private function __construct() {
+    $innerCache = array();
+  }
+  
+  public static function getInstance() {
+    if(!self::$instance) {
+      self::$instance = new self();
+    }
+
+    return self::$instance; 
+  }
+  
+  public function getValue($key) {
+    echo 'xxxx' . isset($innerCache) . 'yyyy';
+    if(array_key_exists($key, $innerCache)) {
+      return $innerCache[$key];
+    }
+  }
+}
+
 class Produto {
+  private static $cache = array();
+  
   //retrieves the product category Id by slug
   public static function get_cat_ID($slug) {
+    /*
+    $category_id = Cache::getInstance() -> getValue('/product/category_id');
+    
+    if(isset($category_id)) {
+      return $category_id;
+    }
+    */
     global $wpdb;
     
     $sql = "SELECT term_id as ID FROM " . $wpdb->prefix ."terms WHERE slug='$slug'";
