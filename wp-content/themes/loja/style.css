@@ -25,6 +25,27 @@
 /* ----------------------------------------------------------- */
 
 
+
+/* =Page
+-------------------------------------------------------------- */
+.page, .post {
+  text-align: left;
+  padding: 0 30px;
+}
+
+.entry-title {
+  color: #F60;
+  border-bottom: solid 1px #777;
+}
+
+.entry-content {
+  color: #777;
+  font-size:11px;
+}
+/* ----------------------------------------------------------- */
+
+
+
 /* =Home
 -------------------------------------------------------------- */
 #destaque {
@@ -189,7 +210,7 @@
   margin-top: 6px;
 }
 
-.buy-submit {
+.buy-submit, .wpcf7-submit {
   width: 84px;
   border-style: none;
   background-color: #ff6600;

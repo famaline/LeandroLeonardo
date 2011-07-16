@@ -7045,7 +7045,7 @@ msgstr "Mais Detalhes"
 #: wpsc-admin/includes/settings-pages/presentation.php:237
 #: wpsc-includes/display.functions.php:216
 msgid "Add To Cart"
-msgstr "Adicionar ao Carrinho"
+msgstr "COMPRAR"
 
 #: wpsc-includes/product-template.php:1460
 msgid "Avg. Customer Rating"

@@ -8,7 +8,6 @@
 	$image_width  = get_option( 'single_view_image_width' );
 	$image_height = get_option( 'single_view_image_height' );
 ?>
-
 <div id="single_product_page_container">
 	
 	<?php
@@ -25,7 +24,6 @@
 		 * Start the product loop here.
 		 * This is single products view, so there should be only one
 		 */
-
 		while ( wpsc_have_products() ) : wpsc_the_product(); ?>
 					<div class="imagecol">
 						<?php if ( wpsc_the_product_thumbnail() ) : ?>
