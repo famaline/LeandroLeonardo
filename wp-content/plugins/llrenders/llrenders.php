@@ -28,6 +28,11 @@ require_once('cache.php');
 require_once('produto.php');
 
 class Renders {
+  public static function render_botao_comprar($product_id) {
+    $html = wpsc_add_to_cart_button($product_id, true);
+    echo str_replace('Adicionar ao Carrinho', 'COMPRAR', $html);
+  }
+  
   public static function render_galeria($categoria, $num_exibir=4) {
     $products = Produto::all(array('category_id' => Produto::get_cat_ID($categoria)));
     require('galeria.php');
