@@ -1,45 +1,7 @@
 <?php
 global $wp_query;	
-/*
- * Most functions called in this page can be found in the wpsc_query.php file
- */
 ?>
 <div id="default_products_page_container" class="wrap wpsc_container">
-
-<?php wpsc_output_breadcrumbs(); ?>
-	
-	<?php do_action('wpsc_top_of_products_page'); // Plugin hook for adding things to the top of the products page, like the live search ?>
-  
-	<?php if(wpsc_display_categories()): ?>
-	  <?php if(wpsc_category_grid_view()) :?>
-			<div class="wpsc_categories wpsc_category_grid group">
-				<?php wpsc_start_category_query(array('category_group'=> get_option('wpsc_default_category'), 'show_thumbnails'=> 1)); ?>
-					<a href="<?php wpsc_print_category_url();?>" class="wpsc_category_grid_item  <?php wpsc_print_category_classes_section(); ?>" title="<?php wpsc_print_category_name(); ?>">
-						<?php wpsc_print_category_image(get_option('category_image_width'),get_option('category_image_height')); ?>
-					</a>
-					<?php wpsc_print_subcategory("", ""); ?>
-				<?php wpsc_end_category_query(); ?>
-				
-			</div><!--close wpsc_categories-->
-	  <?php else:?>
-			<ul class="wpsc_categories">
-			
-				<?php wpsc_start_category_query(array('category_group'=>get_option('wpsc_default_category'), 'show_thumbnails'=> get_option('show_category_thumbnails'))); ?>
-						<li>
-							<?php wpsc_print_category_image(get_option('category_image_width'), get_option('category_image_height')); ?>
-							
-							<a href="<?php wpsc_print_category_url();?>" class="wpsc_category_link <?php wpsc_print_category_classes_section(); ?>" title="<?php wpsc_print_category_name(); ?>"><?php wpsc_print_category_name(); ?></a>
-							<?php if(wpsc_show_category_description()) :?>
-								<?php wpsc_print_category_description("<div class='wpsc_subcategory'>", "</div>"); ?>				
-							<?php endif;?>
-							
-							<?php wpsc_print_subcategory("<ul>", "</ul>"); ?>
-						</li>
-				<?php wpsc_end_category_query(); ?>
-			</ul>
-		<?php endif; ?>
-	<?php endif; ?>
-<?php // */ ?>
 	<?php if(wpsc_display_products()): ?>
 		
 		<?php if(wpsc_is_in_category()) : ?>
@@ -121,7 +83,8 @@ global $wp_query;
 							<?php $action =  wpsc_product_external_link(wpsc_the_product_id()); ?>
 						<?php else: ?>
 						<?php $action = htmlentities(wpsc_this_page_url(), ENT_QUOTES, 'UTF-8' ); ?>					
-						<?php endif; ?>					
+						<?php endif; ?>
+
 						<form class="product_form"  enctype="multipart/form-data" action="<?php echo $action; ?>" method="post" name="product_<?php echo wpsc_the_product_id(); ?>" id="product_<?php echo wpsc_the_product_id(); ?>" >
 						<?php /** the variation group HTML and loop */?>
                         <?php if (wpsc_have_variation_groups()) { ?>
@@ -212,6 +175,12 @@ global $wp_query;
 							</div>
 						</form><!--close product_form-->
 						
+            
+            
+            
+            
+            
+            
 						<?php if((get_option('hide_addtocart_button') == 0) && (get_option('addtocart_or_buynow')=='1')) : ?>
 							<?php echo wpsc_buy_now_button(wpsc_the_product_id()); ?>
 						<?php endif ; ?>
