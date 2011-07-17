@@ -33,7 +33,7 @@ if(isset($product)):
       <div class="prod-por" onclick="LLRenders.showProduct('<?php echo $categoria?>', '<?php echo $slug?>')">R$ <?php echo $price?></div>
     <?php endif?>
   </div>
-  <div class="prod-button-wrapper"><input type="button" class="buy-submit" value="COMPRAR"/><?php wpsc_add_to_cart_button($id)?></div>
+  <div class="prod-button-wrapper"><?php echo Renders::render_botao_comprar($id)?></div>
 </div>
 <?php
 endif

@@ -211,7 +211,7 @@
   margin-top: 6px;
 }
 
-.buy-submit, .wpcf7-submit {
+.buy-submit, .wpcf7-submit, .wpsc_buy_button{
   width: 84px;
   border-style: none;
   background-color: #ff6600;
