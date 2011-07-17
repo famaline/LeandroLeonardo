@@ -7207,7 +7207,7 @@ msgstr "A transação foi bem sucedida"
 #: wpsc-theme/wpsc-transaction_results.php:24
 #: wpsc-theme/wpsc-shopping_cart_page.php:10
 msgid "Oops, there is nothing in your cart."
-msgstr "Opa, seu carrinho de compras está vazio."
+msgstr "Seu carrinho de compras está vazio."
 
 #: wpsc-theme/wpsc-transaction_results.php:24
 #: wpsc-theme/wpsc-shopping_cart_page.php:10

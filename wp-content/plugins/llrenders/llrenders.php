@@ -30,11 +30,11 @@ require_once('produto.php');
 class Renders {
   public static function render_galeria($categoria, $num_exibir=4) {
     $products = Produto::all(array('category_id' => Produto::get_cat_ID($categoria)));
-    require_once('galeria.php');
+    require('galeria.php');
   }
   
   private static function render_galeria_part($product, $categoria='') {
-    require_once('galeria_part.php');
+    require('galeria_part.php');
   }
   
   public static function render_image($path, $params=null) {
