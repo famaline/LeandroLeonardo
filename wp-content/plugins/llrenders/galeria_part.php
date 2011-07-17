@@ -26,10 +26,14 @@ if(isset($product)):
   </table>
   <div class="produto-info">
     <div class="prod-tit" onclick="LLRenders.showProduct('<?php echo $categoria?>', '<?php echo $slug?>')"><?php echo $title?></div>
-    <div class="prod-de" onclick="LLRenders.showProduct('<?php echo $categoria?>', '<?php echo $slug?>')">R$ <?php echo $price?></div>
-    por <div class="prod-por" onclick="LLRenders.showProduct('<?php echo $categoria?>', '<?php echo $slug?>')">R$ <?php echo $special_price?></div>
-    <div class="prod-button-wrapper"><input type="button" class="buy-submit" value="COMPRAR"/><?php wpsc_add_to_cart_button($id)?></div>
+    <?php if($product -> isPromotional()): ?>
+      <div class="prod-de" onclick="LLRenders.showProduct('<?php echo $categoria?>', '<?php echo $slug?>')">R$ <?php echo $price?></div>
+      por <div class="prod-por" onclick="LLRenders.showProduct('<?php echo $categoria?>', '<?php echo $slug?>')">R$ <?php echo $special_price?></div>
+    <?php else:?>
+      <div class="prod-por" onclick="LLRenders.showProduct('<?php echo $categoria?>', '<?php echo $slug?>')">R$ <?php echo $price?></div>
+    <?php endif?>
   </div>
+  <div class="prod-button-wrapper"><input type="button" class="buy-submit" value="COMPRAR"/><?php wpsc_add_to_cart_button($id)?></div>
 </div>
 <?php
 endif

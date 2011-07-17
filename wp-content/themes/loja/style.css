@@ -163,7 +163,7 @@
 }
 
 .galeria .produto-wrapper {
-  display: inline-block;
+  display: inline-table;
   min-height: 255px;
   margin-left: 25px;
 }
@@ -189,6 +189,7 @@
 
 .galeria .produto-info {
   color: #777;
+  min-height: 40px;
 }
 
 .galeria .produto-info .prod-tit, .prod-por {

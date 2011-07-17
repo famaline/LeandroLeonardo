@@ -34,6 +34,9 @@ class Produto {
     return $this -> slug;
   }
   
+  public function isPromotional() {
+    return $this -> special_price > 0;
+  }
   
   private static $cache = array();
   
