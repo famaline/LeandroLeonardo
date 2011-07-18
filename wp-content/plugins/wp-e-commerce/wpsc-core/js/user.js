@@ -17,29 +17,31 @@ function roundNumber(num, dec) {
 
 
 var getresults=function(results) {
-	eval(results);
-	if(window.drag_and_drop_cart_updater) {
-		drag_and_drop_cart_updater();
-	}
-	if(document.getElementById('loadingimage') != null) {
-		document.getElementById('loadingindicator').style.visibility = 'hidden';
-	} else if(document.getElementById('alt_loadingimage') != null) {
-		document.getElementById('alt_loadingindicator').style.visibility = 'hidden';
-	}
-	if((document.getElementById('sliding_cart') != null) && (document.getElementById('sliding_cart').style.display == 'none')) {
-		jQuery("#fancy_collapser").attr("src", (WPSC_CORE_IMAGES_URL + "/minus.png"));
-		jQuery("#sliding_cart").show("fast",function(){
-			ajax.post("index.php",noresults,"ajax=true&set_slider=true&state=1");
-		});
-	}
-	if(document.getElementById('fancy_notification') != null) {
-		jQuery('#loading_animation').css("display", 'none');
-	//jQuery('#fancy_notificationimage').css("display", 'none');
-	}
+  try {
+    eval(results);
+    if(window.drag_and_drop_cart_updater) {
+      drag_and_drop_cart_updater();
+    }
+    if(document.getElementById('loadingimage') != null) {
+      document.getElementById('loadingindicator').style.visibility = 'hidden';
+    } else if(document.getElementById('alt_loadingimage') != null) {
+      document.getElementById('alt_loadingindicator').style.visibility = 'hidden';
+    }
+    if((document.getElementById('sliding_cart') != null) && (document.getElementById('sliding_cart').style.display == 'none')) {
+      jQuery("#fancy_collapser").attr("src", (WPSC_CORE_IMAGES_URL + "/minus.png"));
+      jQuery("#sliding_cart").show("fast",function(){
+        ajax.post("index.php",noresults,"ajax=true&set_slider=true&state=1");
+      });
+    }
+    if(document.getElementById('fancy_notification') != null) {
+      jQuery('#loading_animation').css("display", 'none');
+    //jQuery('#fancy_notificationimage').css("display", 'none');
+    }
+  } catch (e) {
+  }
 }
 
-function submitform(frm, show_notification)
-{
+function submitform(frm, show_notification) {
 	ajax.post("index.php?ajax=true&user=true",getresults,ajax.serialize(frm));
 	if(document.getElementById('loadingimage') != null)	{
 		document.getElementById('loadingimage').src = WPSC_CORE_IMAGES_URL + '/indicator.gif';
