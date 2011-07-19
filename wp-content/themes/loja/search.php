@@ -51,11 +51,7 @@ get_header(); ?>
           <?php
           // take search terms and escape them
           $s = $wpdb->escape(stripslashes($wp_query->query_vars['s']));
-          $sql_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_price'";
-          $sql_special_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_special_price'";
-          $sql = "SELECT pr.ID, pr.post_title, pr.price, pr.special_price, pr.post_name FROM (SELECT ID, post_title, post_name, ($sql_price) as price, ($sql_special_price) as special_price, post_content FROM " . $wpdb->prefix ."posts p WHERE p.post_status = 'publish' AND p.post_type = 'wpsc-product' AND (p.post_title LIKE '%".$s."%' OR p.post_content LIKE '%".$s."%')) as pr";
-
-          $product_list = $wpdb->get_results($sql,ARRAY_A);
+          $product_list = Produto::search($s);
           
           if (!$product_list) {
             echo "<h2 class='entry-title' >Nenhum produto encontrado com o termo: ".$s."</h2>";
