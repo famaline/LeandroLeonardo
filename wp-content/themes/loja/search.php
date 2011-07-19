@@ -18,7 +18,7 @@ get_header(); ?>
         <td style="text-align: left;" align="left">&nbsp;
 
           <strong>Tipo</strong>
-          <a href="?s=Botas">Botas</a>
+          <a href="?s=Bota">Botas</a>
           <a href="?s=Festa">Festa</a>
           <a href="?s=Mocassim">Mocassim</a>
           <a href="?s=Peep Toe">Peep Toe</a>
@@ -47,26 +47,50 @@ get_header(); ?>
         <table border="0" cellspacing="8" cellpadding="8" width="900" height="302">
         <tbody>
         <tr>
-        <td>   <?php if ( have_posts() ) : ?>
-          				<h2 class="entry-title"><?php printf( __( 'Search Results for: %s', 'twentyten' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-          				<div class="entry-content">
-          				<?php
-          				/* Run the loop for the search to output the results.
-          				 * If you want to overload this in a child theme then include a file
-          				 * called loop-search.php and that will be used instead.
-          				 */
-          				 
-          				 get_template_part( 'loop', 'search' );
-          				?>
-          				</div>
-          <?php else : ?>
-          				<div id="post-0" class="post no-results not-found">
-          					<h2 class="entry-title"><?php _e( 'Nothing Found', 'twentyten' ); ?></h2>
-          					<div class="entry-content">
-          						<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'twentyten' ); ?></p>
-          					</div><!-- .entry-content -->
-          				</div><!-- #post-0 -->
-          <?php endif; ?></td>
+        <td  valign="top">
+          <?php
+          // take search terms and escape them
+          $s = $wpdb->escape(stripslashes($wp_query->query_vars['s']));
+          $sql_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_price'";
+          $sql_special_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_special_price'";
+          $sql = "SELECT pr.ID, pr.post_title, pr.price, pr.special_price, pr.post_name FROM (SELECT ID, post_title, post_name, ($sql_price) as price, ($sql_special_price) as special_price, post_content FROM " . $wpdb->prefix ."posts p WHERE p.post_status = 'publish' AND p.post_type = 'wpsc-product' AND (p.post_title LIKE '%".$s."%' OR p.post_content LIKE '%".$s."%')) as pr";
+
+          $product_list = $wpdb->get_results($sql,ARRAY_A);
+          
+          if (!$product_list) {
+            echo "<h2 class='entry-title' >Nenhum produto encontrado com o termo: ".$s."</h2>";
+          }
+          else {
+            
+            echo "<h2 class='entry-title' >Resultado da pesquisa com o termo: ".$s."</h2>";
+            echo "<p> Total = ".count($product_list)."<p>";
+            $index = 0;
+            foreach((array)$product_list as $row) {
+              $index = $index + 1;
+              $product_simples = new Produto($row);
+              
+              $resto  = $index % 4;
+              $produtos[$index] = $product_simples;
+              //dividido por 4
+              if ($resto == 0){
+                foreach((array)$produtos as $product) {
+                  require('./wp-content/plugins/llrenders/galeria_part.php');
+                }  
+                $produtos = '';
+               }
+               //final e não dividido por 4
+              if ($resto != 0 and $index==count($product_list) ){
+                  foreach((array)$produtos as $product) {
+                    require('./wp-content/plugins/llrenders/galeria_part.php');
+                  }
+                $produtos = '';
+              } 
+            } 
+          }
+
+          
+          ?>
+          </td>
         </tr>
         </tbody>
         </table>
