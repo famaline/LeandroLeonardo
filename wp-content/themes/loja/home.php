@@ -1,5 +1,6 @@
 ﻿<?php
 get_header(); ?>
+<?php //Renders::render_query('SELECT * FROM wp_posts WHERE post_parent = 31 and post_type = \'wpsc-product\';') ?>
 		<div id="container">
 			<div id="content" role="main">
         <table cellpadding="0" cellspacing="0" id="destaque">
@@ -8,11 +9,6 @@ get_header(); ?>
             <td><?php Renders::render_destaque(2);?></td>
           </tr>
         </table>
-        <div id="todo" style="border: solid 1px black; text-align:left; padding:10px; margin: 15px;">
-        <div style="color: #C00; font-weight:bold;">TO DO:</div>
-        Mineiro, rode os esquemas abaixo, e atualize os TODOS como feitos e coloque os seus para que eu faça tbm<br/><br/>
-        <?php require_once('todo.php')?>
-        </div>
         <table cellpadding="0" cellspacing="0" id="lancamentos">
           <tr>
             <td><?php Renders::render_image('tit-lancamentos.png', array('width' => '133', 'height' => '22'))?></td>

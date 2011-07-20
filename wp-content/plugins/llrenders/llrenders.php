@@ -28,6 +28,38 @@ require_once('cache.php');
 require_once('produto.php');
 
 class Renders {
+  public static function render_query($sql) {
+    global $wpdb;
+
+    $data = $wpdb->get_results($sql, ARRAY_A);
+    
+    if($data) {
+      $blnFirst = true;
+      $columnNames = null;
+      
+      echo "<table cellpadding='3' cellspacing='1' border='1'>";
+      foreach($data as $row) {
+        if($blnFirst) {
+          $columnNames = array_keys($row);
+          $blnFirst = false;
+          
+          echo "<tr style='background-color:#CCC;color:#FFF;'>";
+          foreach($columnNames as $columnName) {
+            echo "<td>$columnName</td>";
+          }
+          echo "</tr>";
+        }
+        echo "<tr>";
+        foreach($columnNames as $columnName) {
+          echo "<td title='$columnName'>" . $row[$columnName] . "</td>";
+        }
+        echo "<td>" . $row[$columnName] . "</td>";
+        echo "</tr>";
+      }
+      echo "</table>";
+    }
+  }
+  
   public static function render_botao_comprar($product, $categoria) {
     /*
     $html = wpsc_add_to_cart_button($product_id, true);
