@@ -28,13 +28,17 @@ require_once('cache.php');
 require_once('produto.php');
 
 class Renders {
-  public static function render_botao_comprar($product_id, $categoria) {
+  public static function render_botao_comprar($product, $categoria) {
+    /*
     $html = wpsc_add_to_cart_button($product_id, true);
     $html = str_replace('Adicionar ao Carrinho', 'COMPRAR', $html);
     //echo $html;
     $novoTexto = array('submitLLform', 'this, "' . $categoria . '"');
     $html = str_replace(array('submitform', 'this'), $novoTexto, $html);
     echo $html;
+    */
+    
+    require('botao-comprar.php');
   }
   
   public static function render_galeria($categoria, $num_exibir=4) {

@@ -38,7 +38,7 @@ if(isset($product)):
       <img title="Loading" alt="Loading" id="loadingimage" src="<?php echo wpsc_loading_animation_url(); ?>" />
       <?php _e('Updating cart...', 'wpsc'); ?>
     </div>
-    <?php echo Renders::render_botao_comprar($id, $categoria)?>
+    <?php echo Renders::render_botao_comprar($product, $categoria)?>
   </div>
 </div>
 <?php
