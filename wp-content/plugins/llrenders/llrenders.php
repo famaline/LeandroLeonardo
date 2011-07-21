@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 require_once('cache.php');
 require_once('produto.php');
+require_once('functions.php');
 
 class Renders {
   public static function render_query($sql) {
@@ -53,7 +54,6 @@ class Renders {
         foreach($columnNames as $columnName) {
           echo "<td title='$columnName'>" . $row[$columnName] . "</td>";
         }
-        echo "<td>" . $row[$columnName] . "</td>";
         echo "</tr>";
       }
       echo "</table>";

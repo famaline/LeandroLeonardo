@@ -1,6 +1,5 @@
 ﻿<?php
 get_header(); ?>
-<?php //Renders::render_query('SELECT * FROM wp_posts WHERE post_parent = 31 and post_type = \'wpsc-product\';') ?>
 		<div id="container">
 			<div id="content" role="main">
         <table cellpadding="0" cellspacing="0" id="destaque">

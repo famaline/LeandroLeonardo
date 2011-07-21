@@ -38,6 +38,11 @@ class Produto {
     return $this -> special_price > 0;
   }
   
+  public function getVariations() {
+    require_once('variation.class.php');
+    return Variation::find_by_product($this);
+  }
+  
   private static $cache = array();
   
   //retrieves the product category Id by slug
