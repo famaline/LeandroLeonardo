@@ -13,6 +13,11 @@ get_header(); ?>
           <tr>
             <td><?php Renders::render_image('tit-lancamentos.png', array('width' => '133', 'height' => '22'))?></td>
           </tr>
+          <div id="todo" style="border: solid 1px black; text-align:left; padding:10px; margin: 15px;">
+          <div style="color: #C00; font-weight:bold;">TO DO:</div>
+                  Leo veja as alteraçoes que fiz.<br/><br/>
+                 <?php require_once('todo.php') ?>
+          </div>
           <tr>
             <td><?php Renders::render_galeria('lancamentos', 4)?></td>
           </tr>
