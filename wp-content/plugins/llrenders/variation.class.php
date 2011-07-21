@@ -1,19 +1,55 @@
 <?php
 class Variation {
-  public static function find_by_product($product) {
-    /*
-    global $wpdb;
+  private $ID;
+  private $name;
+  private $slug;
+  private $description;
+  private $product_id;
+  
+  public function getID() { return $this->ID; } 
+  public function getName() { return $this->name; } 
+  public function getSlug() { return $this->slug; } 
+  public function getDescription() { return $this->description; } 
+  public function setID($id) { $this->ID = $id; } 
+  public function setName($name) { $this->name = $name; } 
+  public function setSlug($slug) { $this->slug = $slug; } 
+  public function setDescription($description) { $this->description = $description; } 
+
+  public function __construct($data) {
+    $this -> ID = $data['ID'];
+    $this -> name = $data['name'];
+    $this -> slug = $data['slug'];
+    $this -> description = $data['description'];
+    $this -> product_id = $data['product_id'];
+  }
+  
+  public function __toString() {
+    return $this->ID.' '.$this->name;
+  }
+
+  
+  public static function findByProduct($product) {
+    return Variation::find_variation(0, $product -> getID());
+  }
+  
+  public function getChildren() {
+    return Variation::find_variation($this -> ID, $this -> product_id);
+  }
+  
+  private static function find_variation($parent_id=0, $product_id=0) {
+     global $wpdb;
     
-    $sql_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_price'";
-    $sql_special_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_special_price'";
-    $sql = "SELECT pr.ID, pr.post_title, pr.price, pr.special_price, pr.post_name FROM (SELECT ID, post_title, post_name, ($sql_price) as price, ($sql_special_price) as special_price, post_content FROM " . $wpdb->prefix ."posts p WHERE p.post_status = 'publish' AND p.post_type = 'wpsc-product') as pr WHERE pr.ID = $id";
+    $sql = "SELECT terms.term_id as ID, terms.name, terms.slug, tt.description, tr.object_id as product_id FROM wp_terms terms INNER JOIN wp_term_relationships tr ON terms.term_id = tr.term_taxonomy_id INNER JOIN wp_term_taxonomy tt ON terms.term_id = tt.term_id WHERE taxonomy = 'wpsc-variation' AND parent = $parent_id";
+    if($product_id != 0)
+      $sql .= " AND tr.object_id = $product_id";
 
     $data = $wpdb->get_results($sql, ARRAY_A);
-    if(count($data) != 1) {
-      return null;
+    $retorno = array();
+    
+    foreach($data as $row) {
+      array_push($retorno, new Variation($row));
     }
     
-    return new Produto($data[0]);
-    */
+    return $retorno;
   }
 }

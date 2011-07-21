@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 require_once('cache.php');
 require_once('produto.php');
 require_once('functions.php');
+require_once('variation.class.php');
 
 class Renders {
   public static function render_query($sql) {
