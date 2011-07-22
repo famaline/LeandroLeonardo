@@ -28,20 +28,28 @@ class Variation {
   }
 
   
-  public static function findByProduct($product) {
-    return Variation::find_variation(0, $product -> getID());
+  public static function findByProduct($product, $filters=null) {
+    return Variation::find_variation(0, $product -> getID(), $filters);
   }
   
   public function getChildren() {
     return Variation::find_variation($this -> ID, $this -> product_id);
   }
   
-  private static function find_variation($parent_id=0, $product_id=0) {
+  private static function find_variation($parent_id=0, $product_id=0, $filters=null) {
      global $wpdb;
     
     $sql = "SELECT terms.term_id as ID, terms.name, terms.slug, tt.description, tr.object_id as product_id FROM wp_terms terms INNER JOIN wp_term_relationships tr ON terms.term_id = tr.term_taxonomy_id INNER JOIN wp_term_taxonomy tt ON terms.term_id = tt.term_id WHERE taxonomy = 'wpsc-variation' AND parent = $parent_id";
     if($product_id != 0)
       $sql .= " AND tr.object_id = $product_id";
+      
+    if(isset($filters)) {
+      $keys = array_keys($filters);
+      
+      foreach($keys as $key) {
+        $sql .= " AND $key = '" . $filters[$key] . "'";
+      }
+    }
 
     $data = $wpdb->get_results($sql, ARRAY_A);
     $retorno = array();

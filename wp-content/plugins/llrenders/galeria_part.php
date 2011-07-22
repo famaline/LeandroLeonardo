@@ -15,11 +15,21 @@ if(isset($product)):
       <td class="produto-bar" valign="top" align="center">
         <?php Renders::render_image('galeria/cores.png', array('width'=>22, 'heigth'=>42))?>
         <?php Renders::render_image('galeria/seta-cima.png', array('width'=>12, 'heigth'=>7))?>
+        <?php $variations = Variation::findByProduct($product, array('slug'=>'cor'));?>
+        <?php 
+        if(count($variations) > 0) {
+          $cores = $variations[0] -> getChildren();
+          
+          if(count($cores) > 0) {
+        ?>
         <div style="height: 98px; margin-bottom: -16px;">
-          <div style="border:solid 1px #FFF;width: 12px; height: 12px; background-color: #e3b9a3; margin-top: 5px;"></div>
-          <div style="border:solid 1px #FFF;width: 12px; height: 12px; background-color: #945f33; margin-top: 5px;"></div>
-          <div style="border:solid 1px #FFF;width: 12px; height: 12px; background-color: #000; margin-top: 5px;"></div>
-        </div>
+          <?php foreach($cores as $cor): ?>
+          <div style="border:solid 1px #FFF;width: 12px; height: 12px; background-color: #<?php echo $cor -> getDescription() ?>; margin-top: 5px;"></div>
+          <?php endforeach ?>
+          </div>
+        <?php 
+          }
+        } ?>
         <?php Renders::render_image('galeria/seta-baixo.png', array('width'=>12, 'heigth'=>7))?>
       </td>
     </tr>
