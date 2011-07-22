@@ -7,8 +7,8 @@
    $resto  = $index % 4;
    $produtos[$index] = $product_new;
    
-   //dividido por 4
-   if ($resto == 0){
+   //dividido por 4 ou final do arquivo
+   if ($resto == 0 or $index==count($product_list) ){
       echo "<tr>";      
       foreach((array)$produtos as $product) {
       echo "<td>";
@@ -18,17 +18,6 @@
       echo "</tr>";
       $produtos = '';
     }
-    //final e não dividido por 4
-    if ($resto != 0 and $index==count($product_list) ){
-        echo "<tr>";      
-        foreach((array)$produtos as $product) {
-        echo "<td>";
-          require('./wp-content/plugins/llrenders/galeria_part.php');
-       echo "</td>";  
-        }  
-        echo "</tr>";
-        $produtos = '';
-    } 
   }
   
   ?>
