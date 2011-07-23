@@ -24,7 +24,7 @@ if(isset($product)):
         ?>
         <div style="height: 98px; margin-bottom: -16px;">
           <?php foreach($cores as $cor): ?>
-          <div style="border:solid 1px #FFF;width: 12px; height: 12px; background-color: #<?php echo $cor -> getDescription() ?>; margin-top: 5px;"></div>
+          <div class="caixa-cor" style="background-color: #<?php echo $cor -> getDescription() ?>;"></div>
           <?php endforeach ?>
           </div>
         <?php 

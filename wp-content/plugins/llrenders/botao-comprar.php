@@ -4,23 +4,21 @@ if(gettype($product) != 'object') {
 }
 ?>
 <form onsubmit='submitLLform(this, "<?php echo $categoria ?>");return false;'  action='' method='post'>
+  <div style="cursor:pointer" onclick="chooseVariations();">[ tamanho e cor ]</div>
   <div class='wpsc_variation_forms'>
   <?php 
   $variacoes = Variation::findByProduct($product);
   foreach($variacoes as $variacao) {
     $subvars = $variacao -> getChildren();
 ?>
-    <p>
-      <label for='variation_select_1_<?php echo $variacao->getID()?>'><?php echo $variacao->getName()?>:</label>
-      <select class='wpsc_select_variation' name='variation[<?php echo $variacao->getID()?>]' id='variation_select_1_<?php echo $variacao->getID()?>'>
-        <option value='0' >-- Please Select --</option>
+      <select onchange="variation_selected(this);" class='wpsc_select_variation' style="display:none;" name='variation[<?php echo $variacao->getID()?>]' id='variation_select_1_<?php echo $variacao->getID()?>'>
+        <option value='0' ><?php echo $variacao->getName()?></option>
     <?php
     foreach($subvars as $subvar) {
     ?>
         <option value='<?php echo $subvar->getID()?>' ><?php echo $subvar->getName()?></option>
 <?php }?>
       </select>
-    </p>
 <?php 
 }?>
   </div>

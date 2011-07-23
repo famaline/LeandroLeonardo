@@ -211,6 +211,13 @@
   margin-top: 6px;
 }
 
+.galeria .caixa-cor {
+  border:solid 1px #FFF;
+  width: 12px; 
+  height: 12px; 
+  margin-top: 5px;
+}
+
 .buy-submit, .wpcf7-submit, .wpsc_buy_button{
   width: 84px;
   border-style: none;
