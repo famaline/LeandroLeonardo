@@ -250,7 +250,7 @@
 }
 
 .galeria .prod-button-wrapper {
-  margin-top: 6px;
+  margin-top: -10px;
 }
 
 .galeria .caixa-cor {
@@ -267,6 +267,10 @@
   font-weight: bold;
   font-size: 12px;
   color: #FFF;
+}
+
+.variations-color-chooser:hover {
+  background-color: #EFEFEF;
 }
 /* ----------------------------------------------------------- */
 

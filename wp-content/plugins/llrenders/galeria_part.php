@@ -44,7 +44,7 @@ if(isset($product)):
     <?php endif?>
   </div>
   <div class="prod-button-wrapper">
-    <div class="wpsc_loading_animation" id="loadingindicator_<?php echo $categoria?>_<?php echo $id?>">
+    <div class="wpsc_loading_animation" style="display: none;margin-bottom: -10px;margin-top: 15px;visibility: visible;" id="loadingindicator_<?php echo $categoria?>_<?php echo $id?>">
       <img title="Loading" alt="Loading" id="loadingimage" src="<?php echo wpsc_loading_animation_url(); ?>" />
       <?php _e('Updating cart...', 'wpsc'); ?>
     </div>
