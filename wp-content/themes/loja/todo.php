@@ -9,4 +9,5 @@
   <li>Mandei um e-mail  da página amigos de di'rô com todas as instruçoes</li>
   <li>Outro e-mail com Localização	</li>
    <li>Mais um.  Contato	</li>
+    <li>Para visualizar os produtos em R$, altere a coluna tabela wp_wpsc_currency_list, UPDATE wp_wpsc_currency_list SET code = 'R$'  where id= 107	</li>
 </ol>
