@@ -12,7 +12,7 @@ get_header(); ?>
 		<div id="container">
 			<div id="content" role="main">
         <div>
-          <table border="0" cellspacing="0" cellpadding="0" width="120" height="100" align="top">
+          <table border="0" cellspacing="0" cellpadding="0" align="top" id="search-container-table">
             <tr>
              <td id="search-menu" align="left" valign="top">&nbsp;
                <table id="search-type-table">
@@ -26,7 +26,7 @@ get_header(); ?>
               </table> 
              </td>
              <td id="search-content" align="left" valign="top">
-               <table border="0" cellspacing="8" cellpadding="8" width="900" height="302" id="search-content-table">
+               <table border="0" cellspacing="8" cellpadding="8" id="search-content-table">
                  <tbody>
                    <tr>
                    

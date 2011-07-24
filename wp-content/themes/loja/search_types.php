@@ -1,5 +1,5 @@
  <tr>
-   <td>
+   <td class="seach-type-title">
      <strong>Modelo</strong>
    </td>
   </tr>
@@ -69,7 +69,7 @@
       </td>
   </tr>
   <tr>
-    <td>  
+    <td class="seach-type-title">  
      <strong>Tamanho</strong>
     </td> 
   </tr>
@@ -114,7 +114,7 @@
     </td>
   </tr>
   <tr>
-    <td>  
+    <td class="seach-type-title">  
      <strong>Coleção</strong>
     </td> 
   </tr>
@@ -129,7 +129,7 @@
     </td>
   </tr>
   <tr>
-    <td>  
+    <td class="seach-type-title">  
      <strong>Acessórios</strong>
     </td> 
   </tr>

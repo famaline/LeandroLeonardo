@@ -151,6 +151,27 @@
 -------------------------------------------------------------- */
 #search-menu {
   text-align: left;
+  padding-left: 15px;
+  width: 150px;
+}
+
+#search-content {
+  padding-right: 15px;
+}
+
+#search-content-table {
+  min-height: 302px;
+}
+
+#search-container-table {
+  width: 100%;
+}
+
+#search-type-table a {
+  margin-left: 15px;
+}
+
+#search-type-table strong {
 }
 /* ----------------------------------------------------------- */
 
