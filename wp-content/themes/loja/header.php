@@ -108,7 +108,7 @@ var Loja = {
                       <td><?php Renders::render_menu_link('amigos', 'Amigos', '/amigos-diro/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('localizacao', 'Localização', '/localizacao/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('contato', 'Contato', '/contato/');?></td><td class="menu-separador">|</td>
-                      <td><?php Renders::render_menu_link('fechar', 'Meu carrinho de compra', '/products-page/checkout/');?></td>
+                      <td><?php Renders::render_menu_link('fechar', 'Meu carrinho de compras', '/products-page/checkout/');?></td>
                     </tr>
                   </table>
                 <td>
