@@ -168,10 +168,23 @@
 }
 
 #search-type-table a {
-  margin-left: 15px;
+  margin-left: 12px;
+  color: #A1A1A1;
+  text-decoration: none;
+  font-size: 11px;
+  padding: 3px;
+}
+
+#search-type-table a:hover {
+  background-color: #ededed;
+}
+
+.seach-type-title {
+  padding-top:15px;
 }
 
 #search-type-table strong {
+  color: #FF6600;
 }
 /* ----------------------------------------------------------- */
 
