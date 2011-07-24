@@ -14,8 +14,8 @@ get_header(); ?>
         <div>
           <table border="0" cellspacing="0" cellpadding="0" width="120" height="100" align="top">
             <tr>
-             <td style="text-align: left;" align="left">&nbsp;
-               <table >
+             <td id="search-menu" align="left" valign="top">&nbsp;
+               <table id="search-type-table">
                  <tbody>
                    <tr>
                      <td>
@@ -25,8 +25,8 @@ get_header(); ?>
                 <tbody>  
               </table> 
              </td>
-             <td align="left">
-               <table border="0" cellspacing="8" cellpadding="8" width="900" height="302">
+             <td id="search-content" align="left" valign="top">
+               <table border="0" cellspacing="8" cellpadding="8" width="900" height="302" id="search-content-table">
                  <tbody>
                    <tr>
                    
