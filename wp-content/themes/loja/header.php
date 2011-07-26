@@ -103,7 +103,7 @@ var Loja = {
                     <tr>
                       <td><?php Renders::render_menu_link('home', 'Home', '/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('institucional', 'Institucional', '/institucional/');?></td><td class="menu-separador">|</td>
-                      <td><?php Renders::render_menu_link('produtos', 'Produtos', '/products-page/');?></td><td class="menu-separador">|</td>
+                      <td><?php Renders::render_menu_link('produtos', 'Produtos', '?s=Lancamento');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('agenda', 'Eventos', '/events/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('amigos', 'Amigos', '/amigos-diro/');?></td><td class="menu-separador">|</td>
                       <td><?php Renders::render_menu_link('localizacao', 'Localização', '/localizacao/');?></td><td class="menu-separador">|</td>

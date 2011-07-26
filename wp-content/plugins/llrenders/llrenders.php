@@ -123,9 +123,10 @@ class Renders {
 	}
 
 	public static function render_menu_link($name, $text, $forced_link = '') {
-	    $url = get_bloginfo('url') . (isset($forced_link) && !empty($forced_link) ? $forced_link : '/main/' . $name . '/');
-	    $class_name = 'linkmenu' . ((RenderHelpers::actual_url(true) == $url) ? '_on' : '' );
-	    print '<a href="' . $url . '" title="' . $text . '" class="' . $class_name . '">' . $text . '</a>';
+	  $url = get_bloginfo('url') . (isset($forced_link) && !empty($forced_link) ? $forced_link : '/main/' . $name . '/'); 
+    $class_name = 'linkmenu' . ((RenderHelpers::actual_url(true) == $url) ? '_on' : '' );
+    if ($text == 'Produtos' and strrpos($_SERVER["REQUEST_URI"], '?')){$class_name = 'linkmenu_on';}
+    print '<a href="' . $url . '" title="' . $text . '" class="' . $class_name . '">' . $text . '</a>';  
 	}
   
   public static function render_content($name, $msg_default='') {
@@ -172,13 +173,7 @@ class RenderHelpers {
             $pageURL .= ":".$_SERVER["SERVER_PORT"];
         
         $uri = $_SERVER["REQUEST_URI"];
-        
-        if($clean) {
-            $pos = strrpos($uri, '?');
-            if($pos)
-                $uri = substr($uri, 0, $pos);
-        }
-        
+               
         return $pageURL . $uri;
     }
 }
