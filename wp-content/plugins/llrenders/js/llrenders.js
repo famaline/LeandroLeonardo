@@ -28,6 +28,25 @@ var LLRenders = {
   chooseColor: function(variation, item) {
     var divVars = LLRenders.findParentNodeByClass(item, 'variations-color-chooser-div');
     divVars.style.display = 'none';
+    
+    var form = LLRenders.findParentNodeByNodeName(item, 'FORM');
+    var divs = form.getElementsByTagName('div');
+    var found = 0;
+    
+    for(var i=0; i<divs.length;i++) {
+      element = divs[i];
+
+      if(element.className == 'caixa-cor selecionado') {
+        element.style.backgroundColor = '#' + variation.hexa;
+        found++;
+      } else if(element.className == 'color-name') {
+        element.innerHTML = variation.name;
+        found++;
+      }
+      
+      if(found >= 2)
+        break;
+    }
   },
   chooseSize: function(variation, item) {
     var divVars = LLRenders.findParentNodeByClass(item, 'variations-size-chooser-div');

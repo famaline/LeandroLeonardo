@@ -2,36 +2,41 @@
 if(gettype($product) != 'object') {
   $product = Produto::findById($product);
 }
+
+$corVariation = Variation::findByProduct($product, array('slug'=>'cor'));
+if(count($corVariation) > 0) {
+  $cores = $corVariation[0] -> getChildren();
+}
 ?>
 <form onsubmit='submitLLform(this, "<?php echo $categoria ?>");return false;'  action='' method='post'>
 <table cellspacing="0" cellpadding="0" title="Escolha uma variação" style="font-size: 10px; color: #777; cursor:pointer; margin-bottom:5px;margin-top:-5px;">
+<?php if(isset($cores)) { ?>
   <tr onclick="LLRenders.chooseVariation('color', this);">
     <td width="35">cor:</td>
     <td>
       <table class="variations-color-chosen">
         <tr>
-          <td><div style="background-color: #e3b9a1;margin: 2px 0 0 -5px;" class="caixa-cor"></div></td><td>Beje</td>
+          <td><div style="background-color: #CCC;margin: 2px 0 0 -5px;" class="caixa-cor selecionado"></div></td><td><div class="color-name">--</div></td>
         </tr>
       </table>
     </td>
   </tr>
+<?php } ?>
   <tr onclick="LLRenders.chooseVariation('size', this);">
-    <td>tam.:</td><td>41</td>
+    <td width="35">tam.:</td><td>41</td>
   </tr>
 </table>
+<?php if(isset($cores)) { ?>
 <div class="variations-color-chooser-div" style="display: none;background-color: #FFFFFF;border: 1px solid #777777;margin-left: 40px;margin-top: -25px;padding: 5px 10px;position: absolute;">
   <table cellpadding="0" cellspacing="0">
-    <tr class="variations-color-chooser" onclick="LLRenders.chooseColor({'hexa':'e3b9a1'}, this);">
-      <td width="15"><div style="background-color: #e3b9a1;margin: 2px 0 0 -5px;" class="caixa-cor"></div></td><td>Beje</td>
+<?php foreach($cores as $cor): ?>
+    <tr class="variations-color-chooser" onclick="LLRenders.chooseColor({'hexa':'<?php echo $cor -> getDescription() ?>','name':'<?php echo $cor -> getName() ?>'}, this);">
+      <td width="15"><div style="background-color: #<?php echo $cor -> getDescription() ?>;margin: 2px 0 0 -5px;" class="caixa-cor"></div></td><td><?php echo $cor -> getName() ?></td>
     </tr>
-    <tr class="variations-color-chooser" onclick="LLRenders.chooseColor({'hexa':'000'}, this);">
-      <td><div style="background-color: #000;margin: 2px 0 0 -5px;" class="caixa-cor"></div></td><td>Preto</td>
-    </tr>
-    <tr class="variations-color-chooser" onclick="LLRenders.chooseColor({'hexa':'945F33'}, this);">
-      <td><div style="background-color: #945F33;margin: 2px 0 0 -5px;" class="caixa-cor"></div></td><td>Marrom</td>
-    </tr>
+<?php endforeach ?>
   </table>
 </div>
+<?php } ?>
 <div class="variations-size-chooser-div" style="background-color: #FFFFFF;
     display: none;
     border: 1px solid #777777;
