@@ -1,6 +1,36 @@
  <tr>
+    <td class="seach-type-title">  
+     <strong>Coleções</strong>
+    </td> 
+  </tr>
+  <tr>
+    <td>
+     <a href="?s=Primavera-Verão">Primavera-Verão</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="?s=Outono-Inverno">Outono-Inverno</a>
+    </td>
+  </tr>
+  <tr>
+     <td class="seach-type-title">  
+      <strong>Categorias</strong>
+     </td> 
+   </tr>
+   <tr>
+     <td>
+      <a href="?s=Lançamento">Lançamentos</a>
+     </td>
+   </tr>
+   <tr>
+     <td>
+       <a href="?s=Promocões">Promoções</a>
+     </td>
+   </tr>
+ <tr>
    <td class="seach-type-title">
-     <strong>Modelo</strong>
+     <strong>Modelos</strong>
    </td>
   </tr>
   <tr>
@@ -70,7 +100,7 @@
   </tr>
   <tr>
     <td class="seach-type-title">  
-     <strong>Tamanho</strong>
+     <strong>Tamanhos</strong>
     </td> 
   </tr>
   <tr>
@@ -111,21 +141,6 @@
   <tr>
     <td>
      <a href="?s=40">40</a>
-    </td>
-  </tr>
-  <tr>
-    <td class="seach-type-title">  
-     <strong>Coleção</strong>
-    </td> 
-  </tr>
-  <tr>
-    <td>
-     <a href="?s=Primavera-Verão">Primavera-Verão</a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a href="?s=Outono-Inverno">Outono-Inverno</a>
     </td>
   </tr>
   <tr>
