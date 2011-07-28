@@ -32,6 +32,8 @@ var LLRenders = {
     var form = LLRenders.findParentNodeByNodeName(item, 'FORM');
     var divs = form.getElementsByTagName('div');
     var found = 0;
+    var id = variation['id'];
+    var parentId = variation['parentId'];
     
     for(var i=0; i<divs.length;i++) {
       element = divs[i];
@@ -47,10 +49,29 @@ var LLRenders = {
       if(found >= 2)
         break;
     }
+    
+    form['variation[' + parentId + ']'].value = id;
   },
   chooseSize: function(variation, item) {
     var divVars = LLRenders.findParentNodeByClass(item, 'variations-size-chooser-div');
     divVars.style.display = 'none';
+    
+    var form = LLRenders.findParentNodeByNodeName(item, 'FORM');
+    var divs = form.getElementsByTagName('div');
+    
+    var id = variation['id'];
+    var parentId = variation['parentId'];
+    
+    for(var i=0; i<divs.length;i++) {
+      element = divs[i];
+
+      if(element.className == 'tamanho-name') {
+        element.innerHTML = variation.size;
+        break;
+      }
+    }
+    
+    form['variation[' + parentId + ']'].value = id;
   },
   findParentNodeByClass: function(item, className) {
     var pai = item.parentNode;
@@ -72,7 +93,45 @@ var LLRenders = {
   }
 }
 
+var LLRendersEventManager = function() {
+	this.observers = {};
+
+	this.listenTo = function(eventName, callback) {
+		l_eventName = eventName.toLowerCase();
+		l_observers = this.observers[l_eventName];
+		if(l_observers == null) {
+			l_observers = [];
+			this.observers[l_eventName] = l_observers;
+		}
+
+		l_observers.push(callback);
+	}
+
+	this.fireEvent = function(eventName, json) {
+		l_eventName = eventName.toLowerCase();
+		l_observers = this.observers[l_eventName];
+
+		if(l_observers) {
+			for (i = 0; i < l_observers.length; i++) {
+				try {
+					l_observers[i](json);
+				} catch (e) {
+					if(e == 'ABORT')
+            return false;
+				}
+			}
+		}
+    
+    return true;
+	}
+}
+
+var eventManager = new LLRendersEventManager();
+
 function submitLLform(frm, categoria) {
+  if(!eventManager.fireEvent('before:submitLLform', {'form':frm,'categoria':categoria}))
+    return false;
+    
   var id = frm.product_id.value;
   var indicatorId = 'loadingindicator_' + categoria + '_' + id;
 
