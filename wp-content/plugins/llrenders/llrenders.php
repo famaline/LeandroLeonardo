@@ -62,20 +62,16 @@ class Renders {
   }
   
   public static function render_botao_comprar($product, $categoria) {
-    /*
-    $html = wpsc_add_to_cart_button($product_id, true);
-    $html = str_replace('Adicionar ao Carrinho', 'COMPRAR', $html);
-    //echo $html;
-    $novoTexto = array('submitLLform', 'this, "' . $categoria . '"');
-    $html = str_replace(array('submitform', 'this'), $novoTexto, $html);
-    echo $html;
-    */
-    
     require('botao-comprar.php');
   }
   
   public static function render_galeria($categoria, $num_exibir=4) {
-    $products = Produto::all(array('category_id' => Produto::get_cat_ID($categoria)));
+    $limit = $num_exibir * 4;
+
+    $products = Produto::all(array('category_id' => Produto::get_cat_ID($categoria)), array('before-query' => function($sql) use ($limit) {
+      return $sql . " ORDER BY RAND() LIMIT " . $limit;
+    }));
+    
     require('galeria.php');
   }
   

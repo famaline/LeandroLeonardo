@@ -85,7 +85,7 @@ class Produto {
   
   //retrieves all products filtered by whatever conditions given;
   //special condition: category_id
-  public static function all($conditions=null) {
+  public static function all($conditions=null, $callbacks=null) {
     global $wpdb;
     
     $sql_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_price'";
@@ -105,6 +105,14 @@ class Produto {
       }
     }
 
+    if(isset($callbacks)) {
+      $before_query = $callbacks['before-query'];
+      
+      if(isset($before_query)) {
+        $sql = $before_query($sql);
+      }
+    }
+    
     $data = $wpdb->get_results($sql, ARRAY_A);
     $retorno = array();
     foreach($data as $row) {

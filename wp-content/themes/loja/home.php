@@ -1,5 +1,29 @@
 ﻿<?php
 get_header(); ?>
+<script>
+eventManager.listenTo('before:submitLLform', function(json) {
+  var form = json.form;
+  var element = null;
+  var elementName = null;
+  for(var i = 0; i < form.elements.length; i++) {
+    element = form.elements[i];
+    elementName = element.name;
+    
+    if(elementName.match(/^variation\[\d+\]$/) && element.value == "") {
+      alert("Favor escolher uma cor e tamanho");
+      throw 'ABORT';
+    }
+  }
+});
+
+eventManager.listenTo('previous:galeria', function(json){
+    LLRenders.Galeria.movePrevious(json.id);
+});
+
+eventManager.listenTo('next:galeria', function(json){
+    LLRenders.Galeria.moveNext(json.id);
+});
+</script>
 		<div id="container">
 			<div id="content" role="main">
         <table cellpadding="0" cellspacing="0" id="destaque">
@@ -12,11 +36,6 @@ get_header(); ?>
           <tr>
             <td><?php Renders::render_image('tit-lancamentos.png', array('width' => '133', 'height' => '22'))?></td>
           </tr>
-          <div id="todo" style="border: solid 1px black; text-align:left; padding:10px; margin: 15px;">
-          <div style="color: #C00; font-weight:bold;">TO DO:</div>
-                  Leo veja as alteraçoes que fiz.<br/><br/>
-                 <?php require_once('todo.php') ?>
-          </div>
           <tr>
             <td><?php Renders::render_galeria('lancamentos', 4)?></td>
           </tr>

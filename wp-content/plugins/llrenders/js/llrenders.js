@@ -90,6 +90,48 @@ var LLRenders = {
     }
     
     return pai;
+  },
+  Galeria: {
+    moveNext: function(id) {
+      var indice = id.match(/\d+$/);
+      var prefixo = id.substring(0, id.length - indice.length);
+      var next = parseInt(indice) + 1;
+      var galeriaProxima = document.getElementById(prefixo + next);
+      if(!galeriaProxima)
+        galeriaProxima = document.getElementById(prefixo + 0);
+        
+      var galeriaAtual = document.getElementById(prefixo + indice);
+      galeriaAtual.style.display = 'none';
+      galeriaProxima.style.display = 'block';
+    },
+    movePrevious: function(id) {
+      var indice = id.match(/\d+$/);        
+      var prefixo = id.substring(0, id.length - indice.length);
+      var anterior = parseInt(indice) - 1;
+      var galeriaAnterior = null;
+      
+      if(anterior < 0)
+        galeriaAnterior = LLRenders.Galeria.findLast(prefixo, indice);
+      else
+        galeriaAnterior = document.getElementById(prefixo + anterior);
+        
+      var galeriaAtual = document.getElementById(prefixo + indice);
+      galeriaAtual.style.display = 'none';
+      galeriaAnterior.style.display = 'block';
+    },
+    findLast: function(prefixo, id) {
+      var indice = id;
+      var retorno = document.getElementById(prefixo + indice);
+      var next = document.getElementById(prefixo + ++indice);
+      
+      
+      while(next) {
+        retorno = next;
+        next = document.getElementById(prefixo + ++indice);
+      }
+      
+      return retorno;
+    }
   }
 }
 

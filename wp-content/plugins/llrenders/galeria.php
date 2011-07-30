@@ -1,28 +1,29 @@
-<script>
-eventManager.listenTo('before:submitLLform', function(json) {
-  var form = json.form;
-  var element = null;
-  var elementName = null;
-  for(var i = 0; i < form.elements.length; i++) {
-    element = form.elements[i];
-    elementName = element.name;
-    
-    if(elementName.match(/^variation\[\d+\]$/) && element.value == "") {
-      alert("Favor escolher uma cor e tamanho");
-      throw 'ABORT';
-    }
-  }
-});
-</script>
-  <table class="galeria" cellspacing="0" cellpadding="0">
+<?php
+$qtde = count($products);
+$count_down = $qtde;
+$first = true;
+$indice = 0;
+
+while($count_down > 0):
+  $galeria_id = "galeria_" . $categoria . "_$indice";
+?>
+  <table class="galeria" style="display: <?php echo $first?'block':'none' ?>;" id="<?php echo $galeria_id?>" cellspacing="0" cellpadding="0">
     <tr>
-      <td width="40" valign="top"><?php Renders::render_image('galeria/left-on.png', array('width'=>40, 'heigth'=>163))?></td>
-      <td valign="top">
-        <?php for($i=0; $i < $num_exibir; $i++):
-          $product = ($i <= (count($products) - 1)) ? $products[$i] : null;
+      <td width="40" valign="top">
+        <?php Renders::render_image('galeria/left-on.png', array('width'=>40, 'heigth'=>163, 'style'=>'cursor:pointer', 'onclick'=>'return eventManager.fireEvent(\'previous:galeria\', {\'id\':\'' . $galeria_id . '\'})'))?>
+      </td>
+      <td valign="top" width="890">
+        <?php for($i=$indice*$num_exibir; $i < (($indice + 1) * $num_exibir); $i++):
+          $count_down -= 1;
+          $product = ($i <= ($qtde - 1)) ? $products[$i] : null;
           Renders::render_galeria_part($product, $categoria);
         endfor?>
       </td>
-      <td width="40" valign="top"><?php Renders::render_image('galeria/right-on.png', array('width'=>40, 'heigth'=>163))?></td>
+      <td width="40" valign="top"><?php Renders::render_image('galeria/right-on.png', array('width'=>40, 'heigth'=>163, 'style'=>'cursor:pointer', 'onclick'=>'return eventManager.fireEvent(\'next:galeria\', {\'id\':\'' . $galeria_id . '\'})'))?></td>
     </tr>
   </table>
+<?php
+  $first = false;
+  $indice++;
+endwhile
+?>

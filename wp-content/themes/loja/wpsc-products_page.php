@@ -1,7 +1,7 @@
 <?php
 global $wp_query;	
 ?>
-<div id="default_products_page_container" class="wrap wpsc_container">
+<div id="default_products_page_container" class="wrap wpsc_container galeria">
 	<?php if(wpsc_display_products()): ?>	
 		<div class="wpsc_default_product_list">
 		<?php while (wpsc_have_products()) :  wpsc_the_product(); ?>

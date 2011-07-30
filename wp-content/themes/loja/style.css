@@ -208,6 +208,7 @@
   display: inline-table;
   min-height: 255px;
   margin-left: 25px;
+  min-width: 190px;
 }
 
 .galeria .produto {
