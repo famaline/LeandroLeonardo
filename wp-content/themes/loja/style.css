@@ -28,9 +28,13 @@
 
 /* =Page
 -------------------------------------------------------------- */
-.page, .post {
+#content {
+  padding: 0 15px;
+}
+
+.page, .post, .wpsc-product {
   text-align: left;
-  padding: 0 30px;
+  padding: 0 15px;
 }
 
 .entry-title {
@@ -272,6 +276,10 @@
 
 .variations-color-chooser:hover {
   background-color: #EFEFEF;
+}
+
+.produto-wrapper-spacer {
+  min-height: 34px;
 }
 /* ----------------------------------------------------------- */
 

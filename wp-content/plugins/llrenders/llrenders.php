@@ -24,6 +24,9 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
+define('TEXT_COMPRAR', 'COMPRAR');
+define('TEXT_PRECO_DE', 'de');
+
 require_once('cache.php');
 require_once('produto.php');
 require_once('functions.php');
@@ -178,6 +181,11 @@ function inicializar_renders() {
     wp_deregister_script( 'llrenders' );
     wp_register_script( 'llrenders', plugins_url( '/llrenders/js/llrenders.js' , dirname(__FILE__) ) );
     wp_enqueue_script( 'llrenders' );
-}    
- 
+}
+
+function change_from($from) {
+  return "";
+} 
+
+add_filter('wpsc_product_variation_text', 'change_from');
 add_action('init', 'inicializar_renders');

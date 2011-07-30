@@ -38,7 +38,10 @@ if(isset($tamanhos)) {
 <?php }?>
 </table>
 <?php
+} else {
+  echo '<div class="produto-wrapper-spacer"></div>';
 }
+
  if(isset($cores)) { ?>
 <div class="variations-color-chooser-div" style="display: none;background-color: #FFFFFF;border: 1px solid #777777;margin-left: 40px;margin-top: -25px;padding: 5px 10px;position: absolute;">
   <table cellpadding="0" cellspacing="0">

@@ -6,11 +6,15 @@ if(isset($product)):
   $slug = $product -> getSlug();
   $id = $product -> getID();
   $title = $product -> getTitle();
+  
+  $image_src = wpsc_the_product_thumbnail(160, 160, $id, 'products-page' );
+  if(empty($image_src))
+    $image_src = WPSC_CORE_THEME_URL . 'wpsc-images/noimage.png';
 ?>
   <table class="produto" cellspacing="1" cellpadding="0">
     <tr>
       <td class="produto-imagem" onclick="LLRenders.showProduct('<?php echo $categoria?>', '<?php echo $slug ?>')">
-        <img src="<?php echo wpsc_the_product_thumbnail(160, 160, $id, 'products-page' ) ?>" class="product-image" border=0/>
+        <img src="<?php echo $image_src ?>" class="product-image" width="160" height="160" border=0/>
       </td>
       <td class="produto-bar" valign="top" align="center">
         <?php Renders::render_image('galeria/cores.png', array('width'=>22, 'heigth'=>42))?>
