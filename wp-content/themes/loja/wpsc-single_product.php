@@ -8,48 +8,41 @@
 	$image_width  = get_option( 'single_view_image_width' );
 	$image_height = get_option( 'single_view_image_height' );
 ?>
-<div id="single_product_page_container">
+<!-- div id="single_product_page_container" -->
 	
-	<?php
+<?php
+/*
 		// Breadcrumbs
 		wpsc_output_breadcrumbs();
-
-		// Plugin hook for adding things to the top of the products page, like the live search
-		do_action( 'wpsc_top_of_products_page' );
-	?>
+*/
+?>
 	
-	<div class="single_product_display group">
+	<div>
 <?php
 		/**
 		 * Start the product loop here.
 		 * This is single products view, so there should be only one
 		 */
 		while ( wpsc_have_products() ) : wpsc_the_product(); ?>
-					<div class="imagecol">
-						<?php if ( wpsc_the_product_thumbnail() ) : ?>
-								<a rel="<?php echo wpsc_the_product_title(); ?>" class="<?php echo wpsc_the_product_image_link_classes(); ?>" href="<?php echo wpsc_the_product_image(); ?>">
-									<img class="product_image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="<?php echo wpsc_the_product_title(); ?>" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo wpsc_the_product_thumbnail(get_option('product_image_width'),get_option('product_image_height'),'','single'); ?>"/>
-								</a>
-								<?php 
-								if ( function_exists( 'gold_shpcrt_display_gallery' ) )
-									echo gold_shpcrt_display_gallery( wpsc_the_product_id() );
-								?>
-						<?php else: ?>
-									<a href="<?php echo wpsc_the_product_permalink(); ?>">
-									<img class="no-image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="No Image" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo WPSC_CORE_THEME_URL; ?>wpsc-images/noimage.png" width="<?php echo get_option('product_image_width'); ?>" height="<?php echo get_option('product_image_height'); ?>" />
-									</a>
-						<?php endif; ?>
-					</div><!--close imagecol-->
-
-					<div class="productcol">			
-						<?php do_action('wpsc_product_before_description', wpsc_the_product_id(), $wp_query->post); ?>
-            
-						<div class="product_description">
-							<?php echo wpsc_the_product_description(); ?>
-						</div><!--close product_description -->
-            
-						<?php do_action( 'wpsc_product_addons', wpsc_the_product_id() ); ?>
-            
+<table width="100%" border=0>
+  <tr>
+    <td width="<?php echo ($image_width + 10)?>" valign="top">
+      <?php if ( wpsc_the_product_thumbnail() ) : ?>
+          <a rel="<?php echo wpsc_the_product_title(); ?>" class="<?php echo wpsc_the_product_image_link_classes(); ?>" href="<?php echo wpsc_the_product_image(); ?>">
+            <img class="product_image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="<?php echo wpsc_the_product_title(); ?>" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo wpsc_the_product_thumbnail(get_option('product_image_width'),get_option('product_image_height'),'','single'); ?>"/>
+          </a>
+          <?php 
+          if ( function_exists( 'gold_shpcrt_display_gallery' ) )
+            echo gold_shpcrt_display_gallery( wpsc_the_product_id() );
+          ?>
+      <?php else: ?>
+            <a href="<?php echo wpsc_the_product_permalink(); ?>">
+            <img class="no-image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="No Image" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo WPSC_CORE_THEME_URL; ?>wpsc-images/noimage.png" width="<?php echo get_option('product_image_width'); ?>" height="<?php echo get_option('product_image_height'); ?>" />
+            </a>
+      <?php endif; ?>
+    </td>
+    <td valign="top" width="180">
+<div class="productcol">	            
 						<?php if ( wpsc_the_product_additional_description() ) : ?>
 							<div class="single_additional_description">
 								<p><?php echo wpsc_the_product_additional_description(); ?></p>
@@ -189,12 +182,21 @@
 						<input type="hidden" value="<?php echo wpsc_the_product_id(); ?>" name="prodid"/>
 						<input type="hidden" value="<?php echo wpsc_the_product_id(); ?>" name="item"/>
 					</form>
-		</div><!--close single_product_display-->
+		</div>
+    </td>
+    <td valign="top">
+    <h2><?php echo wpsc_the_product_title(); ?></h2>
+    <?php echo wpsc_the_product_description(); ?>
+    </td>
+  </tr>
+</table>
+
+					<!--close single_product_display-->
 		
 		<?php echo wpsc_product_comments(); ?>
 
 <?php endwhile;
+do_action( 'wpsc_theme_footer' ); 
+?> 	
 
-    do_action( 'wpsc_theme_footer' ); ?> 	
-
-</div><!--close single_product_page_container-->
+<!-- /div><!--close single_product_page_container-->

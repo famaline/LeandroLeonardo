@@ -28,10 +28,6 @@
 
 /* =Page
 -------------------------------------------------------------- */
-#content {
-  padding: 0 15px;
-}
-
 .page, .post, .wpsc-product {
   text-align: left;
   padding: 0 15px;
@@ -303,5 +299,21 @@ body {
 #wrapper {
 	width: 1004px;
   background-color: #FFF;
+}
+
+#content {
+  padding: 0 15px;
+}
+
+legend {
+  padding: 0 10px;
+}
+
+fieldset {
+  border: 1px solid #EFEFEF;
+}
+
+h2{
+  margin: 0;
 }
 /* ----------------------------------------------------------- */

@@ -1,4 +1,7 @@
 ﻿<?php
+$variationTamanho = null;
+$variationCor = null;
+
 if(gettype($product) != 'object') {
   $product = Produto::findById($product);
 }
@@ -16,7 +19,8 @@ if(count($tamanhoVariation) > 0) {
 }
 ?>
 <form onsubmit='submitLLform(this, "<?php echo $categoria ?>");return false;' action='' method='post'>
-<?php if(isset($cores) && isset($tamanhos)) { ?>
+<div class="produto-wrapper-spacer">
+<?php if(isset($cores) || isset($tamanhos)) { ?>
 <table cellspacing="0" cellpadding="0" title="Escolha uma variação" style="font-size: 10px; color: #777; cursor:pointer; margin-bottom:5px;margin-top:-5px;">
 <?php if(isset($cores)) { ?>
   <tr onclick="LLRenders.chooseVariation('color', this);">
@@ -38,9 +42,10 @@ if(isset($tamanhos)) {
 <?php }?>
 </table>
 <?php
-} else {
-  echo '<div class="produto-wrapper-spacer"></div>';
 }
+?>
+</div>
+<?php
 
  if(isset($cores)) { ?>
 <div class="variations-color-chooser-div" style="display: none;background-color: #FFFFFF;border: 1px solid #777777;margin-left: 40px;margin-top: -25px;padding: 5px 10px;position: absolute;">
@@ -70,11 +75,11 @@ if(isset($tamanhos)) {
   }
 }?>
 </div>
-<?php if(isset($variationTamanho)) { ?>
+<?php if(isset($tamanhoVariation)) { ?>
 <input type="hidden" name="variation[<?php echo $variationTamanho->getID()?>]" value=""/>
 <?php
 }
-if(isset($variationCor)) { ?>
+if(isset($cores)) { ?>
 <input type="hidden" name="variation[<?php echo $variationCor->getID()?>]" value=""/>
 <?php
 }
