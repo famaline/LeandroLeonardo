@@ -316,4 +316,37 @@ fieldset {
 h2{
   margin: 0;
 }
+
+a {
+  text-decoration: none;
+  color: #777;
+}
+/* ----------------------------------------------------------- */
+
+
+/* Meu Carrinho
+-------------------------------------------------------------- */
+#checkout_page_container_overrule {
+  width: 100%;
+}
+
+table.checkout_cart {
+    background-color: #CCCCCC;
+    width: 100%;
+}
+table.checkout_cart td {
+  background-color: #FFFFFF;
+  padding: 5px;
+}
+table.checkout_cart th {
+  background-color: #EFEFEF;
+  padding: 5px;
+}
+.adjustform input[type="submit"] {
+  border-style: none;
+  background-color: #ff6600;
+  font-weight: bold;
+  font-size: 12px;
+  color: #FFF;
+}
 /* ----------------------------------------------------------- */
