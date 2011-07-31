@@ -28,7 +28,7 @@ define('TEXT_COMPRAR', 'COMPRAR');
 define('TEXT_PRECO_DE', 'de');
 
 require_once('cache.php');
-require_once('produto.php');
+require_once('produto.class.php');
 require_once('functions.php');
 require_once('variation.class.php');
 
@@ -72,7 +72,7 @@ class Renders {
     $limit = $num_exibir * 4;
 
     $products = Produto::all(array('category_id' => Produto::get_cat_ID($categoria)), array('before-query' => function($sql) use ($limit) {
-      return $sql . " ORDER BY RAND() LIMIT " . $limit;
+      return $sql . " AND ((ISNULL(estoque) or estoque='') OR (estoque + estoque_variacoes) > 0) ORDER BY RAND() LIMIT " . $limit;
     }));
     
     require('galeria.php');

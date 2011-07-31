@@ -1,11 +1,15 @@
 <?php
 $qtde = count($products);
-$count_down = $qtde;
-$first = true;
-$indice = 0;
 
-while($count_down > 0):
-  $galeria_id = "galeria_" . $categoria . "_$indice";
+if($qtde > 0):
+  do_action('before_render_galeria', $categoria);
+
+  $count_down = $qtde;
+  $first = true;
+  $indice = 0;
+
+  while($count_down > 0):
+    $galeria_id = "galeria_" . $categoria . "_$indice";
 ?>
   <table class="galeria" style="display: <?php echo $first?'block':'none' ?>;" id="<?php echo $galeria_id?>" cellspacing="0" cellpadding="0">
     <tr>
@@ -29,7 +33,10 @@ while($count_down > 0):
     </tr>
   </table>
 <?php
-  $first = false;
-  $indice++;
-endwhile
+    $first = false;
+    $indice++;
+  endwhile;
+
+  do_action('after_render_galeria', $categoria);
+endif;
 ?>

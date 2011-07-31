@@ -32,22 +32,23 @@ eventManager.listenTo('next:galeria', function(json){
             <td><?php Renders::render_destaque(2);?></td>
           </tr>
         </table>
-        <table cellpadding="0" cellspacing="0" id="lancamentos">
-          <tr>
-            <td><?php Renders::render_image('tit-lancamentos.png', array('width' => '133', 'height' => '22'))?></td>
-          </tr>
-          <tr>
-            <td><?php Renders::render_galeria('lancamentos', 4)?></td>
-          </tr>
-        </table>
-        <table cellpadding="0" cellspacing="0" id="promocoes">
-          <tr>
-            <td><?php Renders::render_image('tit-promocoes.png', array('width' => '110', 'height' => '22'))?></td>
-          </tr>
-          <tr>
-            <td><?php Renders::render_galeria('promocoes', 4)?></td>
-          </tr>
-        </table>
+<?php
+function galeria_before($categoria) {
+  $width = $categoria == 'lancamentos'? '133' : '110';
+  echo '<table cellpadding="0" cellspacing="0" id="' . $categoria . '"><tr><td>';
+  Renders::render_image('tit-' . $categoria . '.png', array('width' => $width, 'height' => '22'));
+  echo '</td></tr><tr><td>';
+}
+
+function galeria_after($categoria) {
+  echo '</td></tr></table>';
+}
+
+add_action('before_render_galeria', 'galeria_before');
+add_action('after_render_galeria', 'galeria_after');
+?>
+<?php Renders::render_galeria('lancamentos', 4)?>
+<?php Renders::render_galeria('promocoes', 4)?>
       </div>
 		</div>
 <?php get_footer(); ?>
