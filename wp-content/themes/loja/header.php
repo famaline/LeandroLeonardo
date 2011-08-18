@@ -72,7 +72,7 @@ var Loja = {
           <td height="80" valign="top">
           	<table width="100%" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="347">&nbsp;</td>
+                <td width="347"><?php Renders::render_image('diro.png', array('width' => 141, 'height' => 80, 'style' => 'margin-left:30px;'));?></td>
                 <td valign="top">
                   <table width="100%" cellspacing="0" cellpadding="0">
                     <tr height="18">
@@ -82,7 +82,7 @@ var Loja = {
                       <td>
                       	<table width="100%" cellspacing="0" cellpadding="0">
                           <tr>
-                            <td valign="top" width="341"><div id="cabecalho_msg">Teste</div></td>
+                            <td valign="top" width="341"><div id="cabecalho_msg">A excel&ecirc;ncia em cal&ccedil;ados</div></td>
                             <td width="304" align="right" valign="top" id="search-area" style="padding-right: 15px;"><?php get_search_form(); ?></td>
                           </tr>
                         </table>
