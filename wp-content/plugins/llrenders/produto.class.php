@@ -69,20 +69,6 @@ class Produto {
   }
 
   public static function findById($id) {
-    /*
-    global $wpdb;
-    
-    $sql_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_price'";
-    $sql_special_price = "SELECT meta_value FROM " . $wpdb->prefix ."postmeta pm WHERE pm.post_id = p.ID AND pm.meta_key = '_wpsc_special_price'";
-    $sql = "SELECT pr.ID, pr.post_title, pr.price, pr.special_price, pr.post_name FROM (SELECT ID, post_title, post_name, ($sql_price) as price, ($sql_special_price) as special_price, post_content FROM " . $wpdb->prefix ."posts p WHERE p.post_status = 'publish' AND p.post_type = 'wpsc-product') as pr WHERE pr.ID = $id";
-
-    $data = $wpdb->get_results($sql, ARRAY_A);
-    if(count($data) != 1) {
-      return null;
-    }
-    
-    return new Produto($data[0]);
-    */
     $produtos = Produto::all(array('ID' => $id));
     
     if($produtos && count($produtos) == 1)
@@ -93,7 +79,7 @@ class Produto {
   
   //retrieves all products filtered by whatever conditions given;
   //special condition: category_id
-  public static function all($conditions=null, $callbacks=null) {
+  public static function all($conditions=null, $extra_sqls=null) {
     global $wpdb;
     //Busca de estoque, caso nulo, quer dizer que não se interessa por controle de estoque
 
@@ -116,11 +102,11 @@ class Produto {
       }
     }
 
-    if(isset($callbacks)) {
-      $before_query = $callbacks['before-query'];
+    if(isset($extra_sqls)) {
+      $before_query = $extra_sqls['before-query'];
       
       if(isset($before_query)) {
-        $sql = $before_query($sql);
+        $sql .= $before_query;
       }
     }
     

@@ -71,9 +71,14 @@ class Renders {
   public static function render_galeria($categoria, $num_exibir=4) {
     $limit = $num_exibir * 4;
 
-    $products = Produto::all(array('category_id' => Produto::get_cat_ID($categoria)), array('before-query' => function($sql) use ($limit) {
-      return $sql . " AND ((ISNULL(estoque) or estoque='') OR (estoque + estoque_variacoes) > 0) ORDER BY RAND() LIMIT " . $limit;
-    }));
+    $products = Produto::all(
+      array(
+        'category_id' => Produto::get_cat_ID($categoria)
+      ), 
+      array('before-query' => 
+        " AND ((ISNULL(estoque) or estoque='') OR (estoque + estoque_variacoes) > 0) ORDER BY RAND() LIMIT " . $limit
+      )
+    );
     
     require('galeria.php');
   }
@@ -107,18 +112,15 @@ class Renders {
 		echo "$dia_semana, $dia_mes de $mes de $ano";
 	}
 	
-	public static function render_destaque($indice=1, $template=null) {
+	public static function render_destaque($indice=1) {
 		$destaque = get_page_by_title("destaque$indice");
+    if(empty($destaque))
+      return;
+
 		$dado = get_post_custom_values("produto", $destaque -> ID);
 		$image = RenderHelpers::get_post_image($destaque -> ID);
 
-		if($template === null) {
-			$template = function ($img, $dt) {
-				echo '<div id="post-img-container"><a href="' . get_bloginfo('url') . '?wpsc-product=' . $dt . '"><img src="' . $img -> guid . '" id="post-img" width="468" border=0/></a></div>';
-			};
-		}
-		
-		$template($image, $dado[0]);
+		echo '<div id="post-img-container"><a href="' . get_bloginfo('url') . '?wpsc-product=' . $dado[0] . '"><img src="' . $image -> guid . '" id="post-img" width="468" border=0/></a></div>';
 	}
 
 	public static function render_menu_link($name, $text, $forced_link = '') {
@@ -163,7 +165,7 @@ class RenderHelpers {
 	
     public static function actual_url($clean = false) {
         $pageURL = 'http';
-        if ($_SERVER["HTTPS"] == "on")
+        if (array_key_exists("HTTPS", $_SERVER) && $_SERVER["HTTPS"] == "on")
             $pageURL .= "s";
             
         $pageURL .= "://" . $_SERVER["SERVER_NAME"];

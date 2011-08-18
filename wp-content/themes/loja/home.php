@@ -26,7 +26,7 @@ eventManager.listenTo('next:galeria', function(json){
 </script>
 		<div id="container">
 			<div id="content" role="main">
-        <table cellpadding="0" cellspacing="0" id="destaque">
+        <table cellpadding="0" cellspacing="0" id="destaque" style="width:100%">
           <tr>
             <td><?php Renders::render_destaque(1);?></td>
             <td><?php Renders::render_destaque(2);?></td>
