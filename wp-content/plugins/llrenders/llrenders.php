@@ -118,7 +118,12 @@ class Renders {
       return;
 
 		$dado = get_post_custom_values("produto", $destaque -> ID);
+    if(empty($dado))
+      return;
+      
 		$image = RenderHelpers::get_post_image($destaque -> ID);
+    if(empty($image))
+      return;
 
 		echo '<div id="post-img-container"><a href="' . get_bloginfo('url') . '?wpsc-product=' . $dado[0] . '"><img src="' . $image -> guid . '" id="post-img" width="468" border=0/></a></div>';
 	}
