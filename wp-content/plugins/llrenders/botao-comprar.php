@@ -50,9 +50,11 @@ if(isset($tamanhos)) {
  if(isset($cores)) { ?>
 <div class="variations-color-chooser-div" style="display: none;background-color: #FFFFFF;border: 1px solid #777777;margin-left: 40px;margin-top: -25px;padding: 5px 10px;position: absolute;">
   <table cellpadding="0" cellspacing="0">
-<?php foreach($cores as $cor): ?>
-    <tr class="variations-color-chooser" onclick="LLRenders.chooseColor({'parentId':<?php echo $variationCor->getID()?>,'id': <?php echo $cor->getID()?>,'hexa':'<?php echo $cor -> getDescription() ?>','name':'<?php echo $cor -> getName() ?>'}, this);">
-      <td width="15"><div style="background-color: #<?php echo $cor -> getDescription() ?>;margin: 2px 0 0 -5px;" class="caixa-cor"></div></td><td><?php echo $cor -> getName() ?></td>
+<?php foreach($cores as $cor):
+  preg_match('/[a-f0-9]{6}/i', $cor -> getDescription(), $matches)
+ ?>
+    <tr class="variations-color-chooser" onclick="LLRenders.chooseColor({'parentId':<?php echo $variationCor->getID()?>,'id': <?php echo $cor->getID()?>,'hexa':'<?php echo $matches[0] ?>','name':'<?php echo $cor -> getName() ?>'}, this);">
+      <td width="15"><div style="background-color: #<?php echo $matches[0] ?>;margin: 2px 0 0 -5px;" class="caixa-cor"></div></td><td><?php echo $cor -> getName() ?></td>
     </tr>
 <?php endforeach ?>
   </table>

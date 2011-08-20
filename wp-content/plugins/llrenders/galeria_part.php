@@ -27,8 +27,10 @@ if(isset($product)):
           if(count($cores) > 0) {
         ?>
         <div style="height: 98px; margin-bottom: -16px;">
-          <?php foreach($cores as $cor): ?>
-          <div class="caixa-cor" style="background-color: #<?php echo $cor -> getDescription() ?>;"></div>
+          <?php foreach($cores as $cor): 
+          preg_match('/[a-f0-9]{6}/i', $cor -> getDescription(), $matches)
+          ?>
+          <div class="caixa-cor" style="background-color: #<?php echo $matches[0] ?>;"></div>
           <?php endforeach ?>
           </div>
         <?php 
