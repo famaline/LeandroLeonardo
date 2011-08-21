@@ -199,4 +199,4 @@
 do_action( 'wpsc_theme_footer' ); 
 ?> 	
 
-<!-- /div><!--close single_product_page_container-->
+</div><!--close single_product_page_container-->
