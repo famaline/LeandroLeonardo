@@ -213,50 +213,57 @@
   min-width: 190px;
 }
 
-.galeria .produto {
+.galeria-produtos .produto-wrapper {
+  display: inline-table;
+  min-height: 255px;
+  margin-left: -15px;
+  min-width: 190px;
+}
+
+.produto {
   background-color: #ddd;
   margin-bottom: 12px;
 }
 
-.galeria .produto .produto-bar {
+.produto .produto-bar {
   background-color: #e5e5e5;
   width: 23px;
 }
 
-.galeria .produto .produtc-image, .produto-imagem {
+.produto .produtc-image, .produto-imagem {
   width: 160px;
   height: 160px;
 }
-.galeria .produto .produto-imagem {
+.produto .produto-imagem {
   background-color: #FFF;
   cursor: pointer;
 }
 
-.galeria .produto-info {
+.produto-info {
   color: #777;
   min-height: 40px;
 }
 
-.galeria .produto-info .prod-tit, .prod-por {
+.produto-info .prod-tit, .prod-por {
   font-weight: bold;
   cursor: pointer;
 }
 
-.galeria .produto-info .prod-de {
+.produto-info .prod-de {
   text-decoration: line-through;
   font-size: 9px;
   cursor: pointer;
 }
 
-.galeria .produto-info .prod-por {
+.produto-info .prod-por {
   display: inline;
 }
 
-.galeria .prod-button-wrapper {
+.prod-button-wrapper {
   margin-top: -10px;
 }
 
-.galeria .caixa-cor {
+.caixa-cor {
   border:solid 1px #FFF;
   width: 12px; 
   height: 12px; 
