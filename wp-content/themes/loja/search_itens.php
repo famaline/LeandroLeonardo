@@ -9,7 +9,7 @@
    
    //dividido por 4 ou final do arquivo
    if ($resto == 0 or $index==count($product_list) ){
-      echo "<tr>";      
+      echo "<tr class=\"galeria\">";      
       foreach((array)$produtos as $product) {
       echo "<td>";
         require('./wp-content/plugins/llrenders/galeria_part.php');
