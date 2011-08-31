@@ -51,11 +51,12 @@ get_header(); ?>
                      $product_list = Produto::search($s);
 
                      if (!$product_list) {
-                       echo "<h2 class='entry-title' >Nenhum produto encontrado com o termo: ".$s."</h2>";
+                       echo "<h2 class='entry-title' >Lista de Produtos</h2>";
+                        echo "<p> Nenhum produto encontrado com o termo: ".$s."<p>";
                      }
                      else {
-                       echo "<h2 class='entry-title' >Resultado da pesquisa com o termo: ".$s."</h2>";
-                       echo "<p> Total de resultados= ".count($product_list)."<p>";
+                       echo "<h2 class='entry-title' >Lista de Produtos</h2>";
+                       echo "<p align='Right'> Total de resultados: ".count($product_list)."<p>";
                      }
                    ?>
                
