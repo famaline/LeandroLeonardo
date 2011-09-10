@@ -54,6 +54,9 @@ if(isset($product)):
       <img title="Loading" alt="Loading" id="loadingimage" src="<?php echo wpsc_loading_animation_url(); ?>" />
       <?php _e('Updating cart...', 'wpsc'); ?>
     </div>
+    <div class="wpsc_loading_animation" style="display: none;margin-bottom: -10px;margin-top: 15px;visibility: visible;" id="adicionado_<?php echo $categoria?>_<?php echo $id?>">
+      Produto adicionado ao carrinho!
+    </div>
     <?php echo Renders::render_botao_comprar($product, $categoria)?>
   </div>
 </div>

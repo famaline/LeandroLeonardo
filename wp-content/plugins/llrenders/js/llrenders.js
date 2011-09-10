@@ -176,10 +176,14 @@ function submitLLform(frm, categoria) {
     
   var id = frm.product_id.value;
   var indicatorId = 'loadingindicator_' + categoria + '_' + id;
+  var adicionadoId = 'adicionado_' + categoria + '_' + id;
 
 	ajax.post("index.php?ajax=true&user=true",function(results){
     jQuery("#" + indicatorId).css('visibility','hidden');
     jQuery("#" + indicatorId).css('display','none');
+    jQuery("#" + adicionadoId).css('display','block');
+    jQuery("#" + adicionadoId).css('visibility','visible');
+
     getresults(results);
   },ajax.serialize(frm));
   
