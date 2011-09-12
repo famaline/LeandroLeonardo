@@ -26,7 +26,7 @@
 		while ( wpsc_have_products() ) : wpsc_the_product(); ?>
 <table width="100%" border=0>
   <tr>
-    <td width="<?php echo ($image_width + 10)?>" valign="top">
+    <td height="400" width="<?php echo ($image_width + 10)?>" valign="top">
       <?php if ( wpsc_the_product_thumbnail() ) : ?>
           <a rel="<?php echo wpsc_the_product_title(); ?>" class="<?php echo wpsc_the_product_image_link_classes(); ?>" href="<?php echo wpsc_the_product_image(); ?>">
             <img class="product_image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="<?php echo wpsc_the_product_title(); ?>" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo wpsc_the_product_thumbnail(get_option('product_image_width'),get_option('product_image_height'),'','single'); ?>"/>
@@ -41,7 +41,7 @@
             </a>
       <?php endif; ?>
     </td>
-    <td valign="top" width="180">
+    <td valign="top" width="220">
 <div class="productcol">	            
 						<?php if ( wpsc_the_product_additional_description() ) : ?>
 							<div class="single_additional_description">
