@@ -59,7 +59,7 @@
 						</div><!--close custom_meta-->
             <?php endif; ?>
 						
-						<form class="product_form" enctype="multipart/form-data" action="<?php echo wpsc_this_page_url(); ?>" method="post" name="1" id="product_<?php echo wpsc_the_product_id(); ?>">
+						<form id="product_form_loja" onsubmit="return ajax_submit_loja(this)" enctype="multipart/form-data" action="<?php echo wpsc_this_page_url(); ?>" method="post" name="1" id="product_<?php echo wpsc_the_product_id(); ?>">
 							<?php if ( wpsc_product_has_personal_text() ) : ?>
 								<fieldset class="custom_text">
 									<legend><?php _e( 'Personalize Your Product', 'wpsc' ); ?></legend>
@@ -152,10 +152,14 @@
 											<?php else: ?>
 										<input type="submit" value="<?php echo TEXT_COMPRAR?>" name="Buy" class="wpsc_buy_button" id="product_<?php echo wpsc_the_product_id(); ?>_submit_button"/>
 											<?php endif; ?>
-										<div class="wpsc_loading_animation">
+										<div class="wpsc_loading_animation" style="display: none;">
 											<img title="Loading" alt="Loading" src="<?php echo wpsc_loading_animation_url(); ?>" />
 											<?php _e('Updating cart...', 'wpsc'); ?>
-										</div><!--close wpsc_loading_animation-->
+										</div>
+                    <div style="display: none;margin-bottom: -10px;margin-top: 15px;visibility: visible;" id="produto_adicionado">
+                      Produto adicionado ao carrinho!
+                    </div>
+                    <!--close wpsc_loading_animation-->
 									</div><!--close wpsc_buy_button_container-->
 								<?php else : ?>
 									<p class="soldout"><?php _e('This product has sold out.', 'wpsc'); ?></p>
@@ -200,3 +204,17 @@ do_action( 'wpsc_theme_footer' );
 ?> 	
 
 </div><!--close single_product_page_container-->
+<script>
+function ajax_submit_loja(form) {
+  jQuery('div.wpsc_loading_animation').css('visibility', 'visible').css('display', 'block');
+  
+  form_values = jQuery(form).serialize();
+  jQuery.post( 'index.php?ajax=true', form_values, function(returned_data) {
+    eval(returned_data);
+    jQuery('div.wpsc_loading_animation').css('visibility', 'hidden').css('display', 'none');
+    jQuery('#produto_adicionado').css('visibility', 'visible').css('display', 'block');
+  });
+  
+  return false;
+}
+</script>
