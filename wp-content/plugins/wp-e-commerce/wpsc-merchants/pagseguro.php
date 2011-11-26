@@ -37,7 +37,7 @@ class wpsc_merchant_pagseguro extends wpsc_merchant
         $cart = $wpsc_cart;
 
         $options = array(
-            'email_cobranca' => get_option('pagseguro_email'),
+            'email_cobranca' => 'dirocalcados@dirocalcados.com.br',
             'ref_transacao'  => $sessionid,
             'encoding'       => 'utf-8',
             'item_frete_1'   => number_format(($cart->total_tax + $cart->base_shipping) * 100, 0, '', ''),
@@ -121,8 +121,8 @@ function form_pagseguro()
     $output .= "<tr>\n\r";
     $output .= "	<td colspan='2'>\n\r";
     $output .= "<strong>".TXT_WPSC_PAYMENT_INSTRUCTIONS_DESCR.":</strong><br />\n\r";
-    $output .= "Email vendedor <input type=\"text\" name=\"pagseguro_email\" value=\"" . get_option('pagseguro_email') . "\"/><br/>\n\r";
-    $output .= "TOKEN <input type=\"text\" name=\"pagseguro_token\" value=\"" . get_option('pagseguro_token') . "\"/><br/>\n\r";
+    $output .= "Email vendedor <input type=\"text\" name=\"pagseguro_email\" value=\"dirocalcados@dirocalcados.com.br\"/><br/>\n\r";
+    $output .= "TOKEN <input type=\"text\" name=\"pagseguro_token\" value=\"75EEE65658674A4480C3C1D0BC68B800  \"/><br/>\n\r";
     $output .= "<em>".TXT_WPSC_PAYMENT_INSTRUCTIONS_BELOW_DESCR."</em>\n\r";
     $output .= "	</td>\n\r";
     $output .= "</tr>\n\r";
@@ -138,7 +138,7 @@ function form_pagseguro()
 function transact_url()
 {
     if(!function_exists("retorno_automatico")) {
-        define ('TOKEN', get_option("pagseguro_token"));
+        define ('TOKEN', "75EEE65658674A4480C3C1D0BC68B800");
         function retorno_automatico ($post)
         {
             global $wpdb;

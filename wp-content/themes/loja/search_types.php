@@ -44,6 +44,11 @@
     </td>
   </tr>
   <tr>
+     <td>
+       <a href="?s=Gladiador">Gladiador</a>
+     </td>
+   </tr>
+  <tr>
     <td>
      <a href="?s=Meia Pata">Meia Pata</a>
     </td>
